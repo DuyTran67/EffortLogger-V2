@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="536.0" prefWidth="822.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Line endX="721.0" endY="3.814697265625E-6" layoutX="101.0" layoutY="37.0" startX="-100.0" />
+      <Text layoutX="300.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Effort Log Editor">
+         <font>
+            <Font name="Verdana Bold" size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="33.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Select the project in order to edit its Effort Log.">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="510.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2.a. Clear this Project's Effort Log.">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Text>
+      <SplitMenuButton layoutX="75.0" layoutY="74.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="346.0" text="Business Project">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+      </SplitMenuButton>
+      <Button layoutX="510.0" layoutY="74.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="240.0" text="Clear this Effort Log">
+         <font>
+            <Font name="Verdana" size="12.0" />
+         </font>
+      </Button>
+      <Text layoutX="33.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2.b. Select the Effort Log Entry to be modified and make it the Current Effort Log Entry.">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Text>
+      <SplitMenuButton layoutX="72.0" layoutY="142.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="721.0">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
+      </SplitMenuButton>
+      <Text layoutX="33.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3.b. Delete the Current Effort Log Entry">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="72.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Text>
+      <TextField layoutX="114.0" layoutY="202.0" prefHeight="26.0" prefWidth="157.0" />
+      <Text layoutX="300.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Time:">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Text>
+      <TextField layoutX="382.0" layoutY="201.0" prefHeight="26.0" prefWidth="157.0" />
+      <Text layoutX="569.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stop Time:">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Text>
+      <TextField layoutX="651.0" layoutY="201.0" prefHeight="26.0" prefWidth="157.0" />
+      <Text layoutX="201.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="yyyy-mm-dd" />
+      <Text layoutX="490.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hh:mm:ss" />
+      <Text layoutX="759.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hh:mm:ss" />
+      <Text layoutX="83.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Life Cycle Step:">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Text>
+      <SplitMenuButton layoutX="83.0" layoutY="274.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="302.0" text="Problem Understanding">
+         <items>
+      		<MenuItem mnemonicParsing="false" text="Problem Understanding" />
+            <MenuItem mnemonicParsing="false" text="Conceptual Design Plan" />
+            <MenuItem mnemonicParsing="false" text="Requirements" />
+            <MenuItem mnemonicParsing="false" text="Conceptual Design" />
+            <MenuItem mnemonicParsing="false" text="Conceptual Design Review" />
+            <MenuItem mnemonicParsing="false" text="Detailed Design Plan" />
+            <MenuItem mnemonicParsing="false" text="Detailed Design Review" />
+            <MenuItem mnemonicParsing="false" text="Implementation Plan" />
+            <MenuItem mnemonicParsing="false" text="Test Case Generation" />
+            <MenuItem mnemonicParsing="false" text="Solution Specification" />
+            <MenuItem mnemonicParsing="false" text="Solution Review" />
+            <MenuItem mnemonicParsing="false" text="Solution Implementation" />
+            <MenuItem mnemonicParsing="false" text="Unit System Test" />
+            <MenuItem mnemonicParsing="false" text="Reflection" />
+            <MenuItem mnemonicParsing="false" text="Repository Update" />
+         </items>
+      </SplitMenuButton>
+      <Text layoutX="83.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Effort Category:">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Text>
+      <SplitMenuButton layoutX="83.0" layoutY="330.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="204.0" text="Plans">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Plans" />
+            <MenuItem mnemonicParsing="false" text="Deliverables" />
+            <MenuItem mnemonicParsing="false" text="Interruptions" />
+            <MenuItem mnemonicParsing="false" text="Defects" />
+            <MenuItem mnemonicParsing="false" text="Others" />
+         </items>
+      </SplitMenuButton>
+      <SplitMenuButton layoutX="306.0" layoutY="330.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="504.0">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
+      </SplitMenuButton>
+      <Text layoutX="85.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="These attributes have been saved.">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Text>
+      <Button layoutX="365.0" layoutY="388.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="204.0" text="Update This Entry" />
+      <Text layoutX="33.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3.a. Modify the Current Effort Log Entry's attributes and press &quot;Update this Entry&quot; when finished.">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Text>
+      <Button layoutX="33.0" layoutY="446.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="204.0" text="Delete This Entry" />
+      <Text layoutX="33.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3.c. Split the Current Effort Log Entry into two entries">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Text>
+      <Button layoutX="33.0" layoutY="501.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="257.0" text="Split This Entry into Two Entries" />
+      <Text layoutX="490.0" layoutY="490.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4. Proceed to the Effort Log Console">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Text>
+      <Button layoutX="490.0" layoutY="497.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="302.0" text="Proceed to the Effort Log Console" />
+   </children>
+</AnchorPane>
