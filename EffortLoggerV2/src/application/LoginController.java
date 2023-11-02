@@ -20,6 +20,16 @@ public class LoginController extends Application {
     private PasswordField passwordField;
     
     public void submitLogin(ActionEvent event) throws Exception {
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginPage.fxml"));
+    	login.setName(usernameField.getText());
+    	login.setPassword(passwordField.getText());
     	
+    	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	scene = new Scene(fxmlLoader.load(), 900, 600);
+    	
+    	DisplayViewController control = fxmlLoader.getController();
+    	control.setLogin(login);
+    	stage.setScene(scene);
+    	stage.show();
     }
 }
