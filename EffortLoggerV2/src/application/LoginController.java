@@ -13,15 +13,21 @@ import java.io.IOException;
 import javafx.scene.control.*;
 
 public class LoginController {
+	/*
     private Scene scene;
     private Stage stage;
     private Login login = new Login();
     
     private TextField usernameField;
     private PasswordField passwordField;
+    */
+	// login button
+	public Button button;
     
     @FXML
     public void submitLogin(ActionEvent event) throws Exception {
+    	
+    	/*
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginPage.fxml"));
     	login.setName(usernameField.getText());
     	login.setPassword(passwordField.getText());
@@ -35,6 +41,7 @@ public class LoginController {
         	stage.setScene(scene);
         	stage.show(); 
     	}
+    	*/
     }
 }
 

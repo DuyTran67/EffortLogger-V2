@@ -1,6 +1,6 @@
 package application;
 	
-import javafx.application.Application;     
+import javafx.application.Application;      
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -14,17 +14,19 @@ import javafx.scene.Parent;
 
 public class MainEffortLogger extends Application {
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage stage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/FXML_files/LoginPage.fxml"));
-			Scene scene = new Scene(root);
-			primaryStage.setScene(scene);
-			primaryStage.setTitle("Login");
-			primaryStage.show();
+			// starting screen
+			Parent root1 = FXMLLoader.load(getClass().getResource("/FXML_files/LoginPage.fxml"));
+			Scene scene1 = new Scene(root1);
+			stage.setScene(scene1);
+			stage.setTitle("Login");
+			stage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
