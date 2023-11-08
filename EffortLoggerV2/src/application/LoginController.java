@@ -1,8 +1,9 @@
 
 package application;
 
-import javafx.application.Application;  
+import javafx.application.Application;   
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -13,18 +14,26 @@ import java.io.IOException;
 import javafx.scene.control.*;
 
 public class LoginController {
-	/*
     private Scene scene;
     private Stage stage;
+    private Parent root;
     private Login login = new Login();
     
     private TextField usernameField;
     private PasswordField passwordField;
-    */
-	// login button
-	public Button button;
     
-    @FXML
+    public void goToLogConsole(ActionEvent event) {
+		try {
+			root = FXMLLoader.load(getClass().getResource("/FXML_files/EffortLoggerConsole.fxml"));
+			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			scene  = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+    
     public void submitLogin(ActionEvent event) throws Exception {
     	
     	/*
