@@ -12,6 +12,8 @@ public class LogConsoleController {
 	private Scene scene;
 	private Parent root;
 	
+	
+	
 	public void goToDefectConsole(ActionEvent event) {
 		try {
 			root = FXMLLoader.load(getClass().getResource("/FXML_files/DefectConsole.fxml"));

@@ -22,11 +22,18 @@ public class Encryption {
 	private final static long ROTATION_INTERVAL = 90 * 24 * 60 * 60 * 1000;
 	private static SecretKey key;
 	private static long lastRotationTimeStamp;
+	private static String alias = "cse360";
+	private static String pw = "teamth1";
+	private static String path = "C:\\Users\\duy67\\git\\EffortLoggerV2Repo\\EffortLoggerV2\\src\\application\\keystore.jks";
 	
 	// Constructor: Initialize a new key
-	public Encryption() throws NoSuchAlgorithmException  {
+	public Encryption() {
 		// Initialize key rotation with a new key
-		generateAESkey(KEYLENGTH);
+		try {
+			generateAESkey(KEYLENGTH);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static SecretKey getCurrentKey() throws NoSuchAlgorithmException {
@@ -49,7 +56,7 @@ public class Encryption {
 	}
 
 	// Encrypts the input
-	public static byte[] encrypt(String input, SecretKey key) throws Exception {
+	public static byte[] encrypt(String input) throws Exception {
 		Key secretKey = new SecretKeySpec(key.getEncoded(), "AES");
         Cipher cipher = Cipher.getInstance("AES");
         cipher.init(Cipher.ENCRYPT_MODE, secretKey);
@@ -57,7 +64,7 @@ public class Encryption {
 	}
 	
 	// Decrypts the input
-	public static String decrypt(byte[] encryptedData, SecretKey key) throws Exception {
+	public static String decrypt(byte[] encryptedData) throws Exception {
 		Key secretKey = new SecretKeySpec(key.getEncoded(), "AES");
         Cipher cipher = Cipher.getInstance("AES");
         cipher.init(Cipher.DECRYPT_MODE, secretKey);
@@ -66,7 +73,7 @@ public class Encryption {
 	}
 	
 	// Store the Secret Key in a key store (in this case a file)
-	public static void storeKey(SecretKey key, String path, String pw, String alias) throws Exception {
+	public static void storeKey() throws Exception {
 		KeyStore keystore = KeyStore.getInstance("JCEKS");
 		char[] password = pw.toCharArray();
 		

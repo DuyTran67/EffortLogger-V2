@@ -53,7 +53,7 @@ public class LoginController {
 				Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Invalid Credentials");
                 alert.setHeaderText(null);
-                alert.setContentText("Your username and password do not match.");
+                alert.setContentText("Invalid username or password.");
                 alert.showAndWait();
 			}
 		} catch (Exception e) {
@@ -61,11 +61,14 @@ public class LoginController {
 		}
 	}
    	
+    // TODO: Fix isValid
+    // method to check if username and password are valid
 	public boolean isValid(String username, String password) {
 		// admin access
 		if (username.equals("teamth1") && password.equals("cse360")) {
 			return true;
 		}
+		
 		return false;
 	}
 	

@@ -2,7 +2,7 @@ package application;
 
 // Mainline class for the EffortLogger V2 project.
 
-import javafx.application.Application;      
+import javafx.application.Application;       
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
