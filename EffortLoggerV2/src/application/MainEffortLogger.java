@@ -1,6 +1,11 @@
 package application;
 
-// Mainline class for the EffortLogger V2 project.
+/***** Mainline class for the EffortLogger V2 project. Calls all the function and invokes the login mechanism.
+ * 
+ * 
+ * @author: Duy Tran
+ * 
+ */
 
 import javafx.application.Application;       
 import javafx.scene.Node;

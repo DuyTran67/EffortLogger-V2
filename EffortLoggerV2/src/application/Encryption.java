@@ -14,45 +14,28 @@ import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
+/***** This class is used to implement the AES (Advanced Encryption Standard) Encryption method to encrypt and decrypt 
+ * user input data to improve software security and privacy.
+ *  
+ * @author: Duy Tran
+ * 
+ */
 
 public class Encryption {
-	// Key for encryption (AES-256)
-	final static int KEYLENGTH = 256;
-	// Interval for key rotation policy, 90 days in milliseconds
-	private final static long ROTATION_INTERVAL = 90 * 24 * 60 * 60 * 1000;
 	private static SecretKey key;
-	private static long lastRotationTimeStamp;
+	private static String encoding = "UTF-8";
 	private static String alias = "cse360";
 	private static String pw = "teamth1";
 	private static String path = "C:\\Users\\duy67\\git\\EffortLoggerV2Repo\\EffortLoggerV2\\src\\application\\keystore.jks";
 	
-	// Constructor: Initialize a new key
+	// Constructor
 	public Encryption() {
-		// Initialize key rotation with a new key
 		try {
-			generateAESkey(KEYLENGTH);
-		} catch (NoSuchAlgorithmException e) {
+			key = loadKey();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public static SecretKey getCurrentKey() throws NoSuchAlgorithmException {
-		// Check if it's time to rotate the key
-		long currentTime = new Date().getTime();
-		if (currentTime - lastRotationTimeStamp >= ROTATION_INTERVAL) {
-			generateAESkey(KEYLENGTH);
-		}
-		return key;
-	}
-	
-	// Method to generate a random AES key for encryption
-	private static SecretKey generateAESkey(int keyLength) throws NoSuchAlgorithmException {
-		KeyGenerator keyGen = KeyGenerator.getInstance("AES");
-		keyGen.init(keyLength);
-		key = keyGen.generateKey();
-		lastRotationTimeStamp = new Date().getTime();
-		System.out.println("Key rotated at " + new Date(lastRotationTimeStamp));
-		return key;
+		
 	}
 
 	// Encrypts the input
@@ -60,7 +43,7 @@ public class Encryption {
 		Key secretKey = new SecretKeySpec(key.getEncoded(), "AES");
         Cipher cipher = Cipher.getInstance("AES");
         cipher.init(Cipher.ENCRYPT_MODE, secretKey);
-        return cipher.doFinal(input.getBytes());
+        return cipher.doFinal(input.getBytes(encoding));
 	}
 	
 	// Decrypts the input
@@ -69,30 +52,23 @@ public class Encryption {
         Cipher cipher = Cipher.getInstance("AES");
         cipher.init(Cipher.DECRYPT_MODE, secretKey);
         byte[] decryptedBytes = cipher.doFinal(encryptedData);
-        return new String(decryptedBytes);
+        return new String(decryptedBytes, encoding);
 	}
 	
-	// Store the Secret Key in a key store (in this case a file)
-	public static void storeKey() throws Exception {
+	// Load the key store (jks file) to get the secret key.
+	public static SecretKey loadKey() throws Exception {
 		KeyStore keystore = KeyStore.getInstance("JCEKS");
 		char[] password = pw.toCharArray();
+		SecretKey key = null;
 		
-		// Load an existing key store or create a new one
+		// Load the key store
 		try (FileInputStream keystoreFile = new FileInputStream(path)) {
 			keystore.load(keystoreFile, password);
+			key = (SecretKey) keystore.getKey(alias, password);
 		} catch (Exception e) {
-			keystore.load(null, password);
-		}
-		
-		// store the secret key in the key store
-		KeyStore.SecretKeyEntry keyEntry = new KeyStore.SecretKeyEntry(key);
-		keystore.setEntry(alias, keyEntry, new KeyStore.PasswordProtection(password));
-		
-		// save the key store to a file
-		try (FileOutputStream keystoreFile = new FileOutputStream(path)) {
-			keystore.store(keystoreFile, password);
-		}	catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		return key;
 	}
 }

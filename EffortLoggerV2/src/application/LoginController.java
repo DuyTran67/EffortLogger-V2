@@ -1,13 +1,23 @@
 package application;
 
-// Controller class for Login page. Checks to see if username and password exist and let users log into 
+/***** Controller class for Login page. Checks to see if username and password exist and let users log into the system.
+ * 
+ * @author: Duy Tran
+ * 
+ */
 
-import javafx.scene.Node;
+import javafx.scene.Node; 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,6 +31,7 @@ public class LoginController {
     private Parent root;
     
     private String username, pw;
+    private String csvPath = "C:\\Users\\duy67\\git\\EffortLoggerV2Repo\\EffortLoggerV2\\src\\application\\accounts.csv";
     
     @FXML
     private TextField usernameField;
@@ -61,14 +72,40 @@ public class LoginController {
 		}
 	}
    	
-    // TODO: Fix isValid
-    // method to check if username and password are valid
-	public boolean isValid(String username, String password) {
+    // method to check if username and password are valid. Return true if admin.
+    // Reads credentials from csv file and check if user and password are correct.
+	public boolean isValid(String username, String password) throws IOException {
 		// admin access
-		if (username.equals("teamth1") && password.equals("cse360")) {
+		if (username.equals("admin") && password.equals("admin")) {
 			return true;
 		}
 		
+		// Encryption to decrypt the stored passwords and compare 
+		Encryption aes = new Encryption();		
+		List<List<String>> records = new ArrayList<>();
+		FileReader csvFile = new FileReader(csvPath);
+		BufferedReader fileReader = new BufferedReader(csvFile);
+		String line;
+		
+    	while((line = fileReader.readLine()) != null) {
+    		String[] items = line.split(",");
+        	records.add(Arrays.asList(items));
+    	}
+        fileReader.close();
+        
+        for (List<String> curr : records) {
+        	// turn input password into encrypted form and compare
+        	try {
+				byte[] encryptedPW = aes.encrypt(password);
+				password = Base64.getEncoder().encodeToString(encryptedPW);				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+        	if (username.equals(curr.get(0)) && password.equals(curr.get(1))) {
+        		return true;
+        	}
+        }
 		return false;
 	}
 	

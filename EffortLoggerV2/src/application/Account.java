@@ -9,14 +9,6 @@ public class Account {
 		this.password = pw;
 	}
 	
-	public void setUser(String user) {
-		this.username = user;
-	}
-	
-	public void setPW(String pw) {
-		this.password = pw;
-	}
-	
 	public String getUser() { return username; }
 	public String getPW() { return password; }
 }

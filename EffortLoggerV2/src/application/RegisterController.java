@@ -1,14 +1,18 @@
 package application;
-// A controller class for the register page. User creates a new account and store it in a csv file.
+/***** A controller class for the register page. Manages the action of user registering/creating a new account.
+ * 
+ * @author: Duy Tran
+ * 
+ */
 
-import java.io.BufferedReader;
+import java.io.BufferedReader; 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,13 +32,15 @@ public class RegisterController {
 	private PasswordField passwordField2;
 	
 	private String username, password1, password2;
+	private String csvPath = "C:\\Users\\duy67\\git\\EffortLoggerV2Repo\\EffortLoggerV2\\src\\application\\accounts.csv";
 	// An encryption object to encrypt password later
 	Encryption aes = new Encryption();
 	
 	private Parent root;
 	private Scene scene;
 	private Stage stage;
-
+	
+	// Method to manage account creation.
 	public void createAccount(ActionEvent event) throws Exception {
 		username = userField.getText();
 		password1 = passwordField1.getText();
@@ -57,23 +63,22 @@ public class RegisterController {
         // user entered all required credentials
 		} else {
 			// username already exists
-			if (usernameExists(username)) {
-				Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("Username already exists.");
-                alert.showAndWait();
             // username or password is too short or too long
-			} else if (!(username.length() >= 4 && username.length() <= 32 && password1.length() >= 4 && password1.length() <= 32)) {
+			if (!(username.length() >= 4 && username.length() <= 32 && password1.length() >= 4 && password1.length() <= 32)) {
 				Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText(null);
                 alert.setContentText("username or password is too short or too long.");
                 alert.showAndWait();
+			} else if (usernameExists(username)) {
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Username already exists.");
+                alert.showAndWait();
             // No problems. Add account
 			} else {
 				// before creating a new account, encrypt password
-				aes.storeKey();
 				byte[] encryptedData = aes.encrypt(password1);
 				password1 = Base64.getEncoder().encodeToString(encryptedData);
 				Account newAccount = new Account(username, password1);
@@ -91,16 +96,31 @@ public class RegisterController {
 			}
 		}
 	}
-	//TODO: fix usernameExists
 	
-	// method to check if username already exists
-	public boolean usernameExists(String username) throws FileNotFoundException {
-		FileReader csvFile = new FileReader("C:\\Users\\duy67\\git\\EffortLoggerV2Repo\\EffortLoggerV2\\src\\application\\accounts.csv");
+	// method to check if username already exists by reading the csv file and storing the information into an arraylist.
+	// Then traverse the arraylist to check. 
+	public boolean usernameExists(String username) throws IOException {
+		List<String> records = new ArrayList<>();
+		FileReader csvFile = new FileReader(csvPath);
 		BufferedReader fileReader = new BufferedReader(csvFile);
+		String line;
+
+    	while((line = fileReader.readLine()) != null) {
+    		int comma = line.indexOf(',');
+        	String currUser = line.substring(0, comma);
+        	records.add(currUser);
+    	}
+    
+        fileReader.close();
         
+        for (String curr : records) {
+        	if (curr.equals(username)) {
+        		return true;
+        	}
+        }
 		return false;
 	}
-	
+
 	// method to save account credentials to csv file
 	public void saveAccount(Account acc) throws IOException {
 		File csvFile = new File("C:\\Users\\duy67\\git\\EffortLoggerV2Repo\\EffortLoggerV2\\src\\application\\accounts.csv");
