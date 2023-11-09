@@ -1,5 +1,7 @@
 package application;
-	
+
+// Mainline class for the EffortLogger V2 project.
+
 import javafx.application.Application;      
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -20,7 +22,7 @@ public class MainEffortLogger extends Application {
 			Parent root1 = FXMLLoader.load(getClass().getResource("/FXML_files/LoginPage.fxml"));
 			Scene scene1 = new Scene(root1);
 			stage.setScene(scene1);
-			stage.setTitle("Login");
+			stage.setTitle("EffortLogger V2");
 			stage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
