@@ -4,12 +4,15 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 
 public class DefectController {
@@ -18,6 +21,8 @@ public class DefectController {
 	private Button Submit_btn;
 	@FXML 
 	private Button EL_btn;
+	@FXML
+	private Button log_btn;
 	@FXML 
 	private TextArea defect_description;
 	@FXML 
@@ -32,8 +37,10 @@ public class DefectController {
 	private Label Char_text;
 	@FXML 
 	private Label error_txt;
+	private Scene scene;
+	private Stage stage;
 	
-	private DefectLibrary library = new DefectLibrary();
+	private static DefectLibrary library = new DefectLibrary();
 	
 	//Sets Combo boxes
 	//Later on it will be specific to what projects the user has access to 
@@ -62,13 +69,24 @@ public class DefectController {
 		Boolean test = chkDefect();
 		if(test) {
 			System.out.println("its fully working");
-			DefectReport report = new DefectReport(group_name.getValue(),defect_description.getText());
+			DefectReport report = new DefectReport(Projects.getValue(),group_name.getValue(), group_num.getValue(),"56", defect_description.getText());
 			library.submitDefectReport(report, group_num.getValue());
 			System.out.println(library.getReports().get(0).getReportContent());
 			defect_description.setText("");
 		}
 	}
 	
+	public static DefectLibrary getLibrary() {
+		return library;
+	}
+	
+	public void log() throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Logs_Page.fxml"));
+		scene = new Scene(fxmlLoader.load());
+		stage = new Stage();
+		stage.setScene(scene);
+		stage.show();
+	}
 	//Checks all inputs in the defect report to see if everything is selected properly
 	public Boolean chkDefect() {
 		String defect = defect_description.getText();
@@ -86,7 +104,6 @@ public class DefectController {
 					error_txt.setText("One of the categories is left empty");
 					return false;
 				}
-				DefectReporting report = new DefectReporting(defect, group_name.getValue(), group_num.getValue(), Projects.getValue());
 				error_txt.setText("Submitted!");
 				return true;
 			}
