@@ -1,6 +1,8 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.SplitMenuButton;
+import java.util.Arrays;
+import java.util.List;
 
 public class LogConsoleController {
 
@@ -61,7 +63,7 @@ public class LogConsoleController {
 
     private void loadProjects() {
         // Simulate fetching projects from the database. Replace this with your actual database logic.
-        List<String> projects = fetchProjectsFromDatabase();
+        List<String> projects = List.of("Development Project", "Business Project");
 
         // Clear existing items in the menu button
         projectSplitMenuButton.getItems().clear();
@@ -69,32 +71,47 @@ public class LogConsoleController {
         // Populate the menu button with projects
         for (String project : projects) {
             MenuItem menuItem = new MenuItem(project);
-            menuItem.setOnAction(event -> handleProjectSelection(project));
             projectSplitMenuButton.getItems().add(menuItem);
         }
     }
 
-    private List<String> fetchProjectsFromDatabase() {
-        // Implement logic to fetch projects from the database
-        // This is a placeholder, replace it with your actual database logic
-        return List.of("Development Project", "Business Project");
-    }
-
-    private void handleProjectSelection(String selectedProject) {
-        // Implement any additional logic when a project is selected
-        System.out.println("Selected Project: " + selectedProject);
-    }
-
     private void loadLifeCycles() {
-        // Implement logic to load life cycles from the database and populate the lifeCycleSplitMenuButton
+        List<String> projects = List.of("Development Project", "Business Project");
+
+        // Clear existing items in the menu button
+        projectSplitMenuButton.getItems().clear();
+
+        // Populate the menu button with projects
+        for (String project : projects) {
+            MenuItem menuItem = new MenuItem(project);
+            projectSplitMenuButton.getItems().add(menuItem);
+        }
     }
 
     private void loadEffortCategories() {
-        // Implement logic to load effort categories from the database and populate the effortCategorySplitMenuButton
+        List<String> projects = List.of("Development Project", "Business Project");
+
+        // Clear existing items in the menu button
+        projectSplitMenuButton.getItems().clear();
+
+        // Populate the menu button with projects
+        for (String project : projects) {
+            MenuItem menuItem = new MenuItem(project);
+            projectSplitMenuButton.getItems().add(menuItem);
+        }
     }
 
     private void loadDeliverables() {
-        // Implement logic to load deliverables from the database and populate the deliverableSplitMenuButton
+        List<String> projects = List.of("Development Project", "Business Project");
+
+        // Clear existing items in the menu button
+        projectSplitMenuButton.getItems().clear();
+
+        // Populate the menu button with projects
+        for (String project : projects) {
+            MenuItem menuItem = new MenuItem(project);
+            projectSplitMenuButton.getItems().add(menuItem);
+        }
     }
 
     // Add more methods as needed for managing other data
