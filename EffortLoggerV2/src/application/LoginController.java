@@ -47,7 +47,7 @@ public class LoginController {
 			// if user and pw valid, show success pop up
 			if (isValid(username, pw)) {
                 // open effort log console
-        			root = FXMLLoader.load(getClass().getResource("/FXML_files/EffortLoggerConsole.fxml"));
+        			root = FXMLLoader.load(getClass().getResource("/FXML_files/HomePage.fxml"));
         			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         			scene = new Scene(root);
         			stage.setScene(scene);

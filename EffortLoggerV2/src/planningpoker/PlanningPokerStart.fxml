@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="607.0" prefWidth="498.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="planningpoker.PlanningPokerController">
+   <children>
+      <Line endX="397.0" endY="7.62939453125E-6" layoutX="101.0" layoutY="57.0" startX="-100.0" />
+      <Text layoutX="79.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Planning Poker">
+         <font>
+            <Font name="Verdana Bold" size="40.0" />
+         </font>
+      </Text>
+      <Label layoutX="56.0" layoutY="80.0" text="Display Name">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="displayNameField" layoutX="56.0" layoutY="106.0" prefHeight="37.0" prefWidth="388.0" promptText="Enter display name">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Label layoutX="56.0" layoutY="149.0" text="User Stories">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="userStoriesText" layoutX="54.0" layoutY="175.0" prefHeight="128.0" prefWidth="388.0" promptText="Put each story on its own line." />
+      <Button fx:id="importButton" layoutX="180.0" layoutY="472.0" mnemonicParsing="false" onAction="#importFile" text="Import file">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="137.0" layoutY="451.0" text="Press &quot;Import file&quot; to import historical data" />
+      <Button fx:id="newGameButton" layoutX="252.0" layoutY="534.0" mnemonicParsing="false" onAction="#startNewGame" text="Start New Game">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="savedGamesButton" layoutX="39.0" layoutY="534.0" mnemonicParsing="false" onAction="#savedGames" prefHeight="51.0" prefWidth="194.0" text="Saved Games">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="54.0" layoutY="307.0" text="Keywords">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="displayNameField1" layoutX="54.0" layoutY="332.0" prefHeight="37.0" prefWidth="388.0" promptText="Enter important keywords for the stories">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Label layoutX="55.0" layoutY="375.0" text="Game Name">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="gameNameField" layoutX="55.0" layoutY="399.0" prefHeight="37.0" prefWidth="388.0" promptText="Enter game name">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>
