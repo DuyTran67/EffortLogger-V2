@@ -76,7 +76,7 @@ public class LogConsoleController {
     }
 
     private void loadLifeCycles() {
-        List<String> projects = List.of("Development Project", "Business Project");
+        List<String> projects = List.of("Problem Understanding", "");
 
         // Clear existing items in the menu button
         projectSplitMenuButton.getItems().clear();
