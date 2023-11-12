@@ -38,9 +38,7 @@ public class LogConsoleController {
         String stoppedLifeCycle = lifeCycleSplitMenuButton.getText();
         String stoppedEffortCategory = effortCategorySplitMenuButton.getText();
         String stoppedDeliverable = deliverableSplitMenuButton.getText();
-
-        // Perform additional validation if needed
-
+	    
         // Store the stopped activity information in the database
         storeActivityDataInDatabase(stoppedProject, stoppedLifeCycle, stoppedEffortCategory, stoppedDeliverable);
 
@@ -76,7 +74,7 @@ public class LogConsoleController {
     }
 
     private void loadLifeCycles() {
-        List<String> projects = List.of("Problem Understanding", "");
+        List<String> projects = List.of("Problem Understanding", "Conceptual Design Plan", "Requirements", "Conceptual Design", "Conceptual Design Review", "Detailed Design Plan", "Detailed Design Review", "Implementation Plan", "Test Case Generation", "Solution Specification", "Solution Review", "Solution Implementation", "Unit System Test", "Reflection", "Repository Update");
 
         // Clear existing items in the menu button
         projectSplitMenuButton.getItems().clear();
@@ -89,7 +87,7 @@ public class LogConsoleController {
     }
 
     private void loadEffortCategories() {
-        List<String> projects = List.of("Development Project", "Business Project");
+        List<String> projects = List.of("Deliverables", "Plans", "Interruptions", "Defects", "Others");
 
         // Clear existing items in the menu button
         projectSplitMenuButton.getItems().clear();
@@ -102,7 +100,7 @@ public class LogConsoleController {
     }
 
     private void loadDeliverables() {
-        List<String> projects = List.of("Development Project", "Business Project");
+        List<String> projects = List.of("Conceptual Design", "Detailed Design", "Test Cases", "Solution", "Reflection", "Outline", "Draft", "Report", "User Defined", "Other");
 
         // Clear existing items in the menu button
         projectSplitMenuButton.getItems().clear();
@@ -114,8 +112,6 @@ public class LogConsoleController {
         }
     }
 
-    // Add more methods as needed for managing other data
-
     @FXML
     private void goToEditor(ActionEvent event) {
         // Implement logic to navigate to the Effort Log Editor
@@ -124,5 +120,14 @@ public class LogConsoleController {
     @FXML
     private void goToDefectConsole(ActionEvent event) {
         // Implement logic to navigate to the Defect Log Console
+    }
+	
+    @FXML
+    private void goToDefinitions(ActionEvent event) {
+        // Implement logic to navigate to the Definitions
+    }
+	@FXML
+    private void goToEffortandDefectLogs(ActionEvent event) {
+        // Implement logic to navigate to the Effort and Defect Logs
     }
 }
