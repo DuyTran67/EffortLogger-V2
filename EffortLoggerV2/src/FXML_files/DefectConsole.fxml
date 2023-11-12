@@ -27,5 +27,6 @@
       <Button id="EL_btn" fx:id="EL_btn" layoutX="36.0" layoutY="343.0" mnemonicParsing="false" text="EffortLogger Console" />
       <Button fx:id="start_btn" layoutX="457.0" layoutY="91.0" mnemonicParsing="false" onAction="#button" text="Button" />
       <Label fx:id="error_txt" layoutX="388.0" layoutY="377.0" prefHeight="18.0" prefWidth="204.0" text="Click Submit when ready" />
+      <Button fx:id="log_btn" layoutX="274.0" layoutY="343.0" mnemonicParsing="false" text="Logs" onAction="#log"/>
    </children>
 </AnchorPane>
