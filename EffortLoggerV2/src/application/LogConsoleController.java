@@ -42,6 +42,9 @@ public class LogConsoleController implements Initializable {
     	// Later on, implement ArrayList<String> projects = new ArrayList<>();  from definitions 
     	projectCombo.setItems(FXCollections.observableArrayList("Development Project", "Business Project"));
     	// Load other combo boxes
+	lifeCycleCombo.setItems(FXCollections.observableArrayList("Problem Understanding", "Conceptual Design Plan", "Requirements", "Conceptual Design", "Conceptual Design Review", "Detailed Design Plan", "Detailed Design/Prototype", "Detailed Design Review", "Implementation plan", "Test Case Generation", "Solution Specification", "Solution Review", "Solution Implementation", "Unit/System Test", "Reflection", "Repository Update");
+	effortCategoryCombo.setItems(FXCollections.observableArrayList("Plans", "Deliverables", "Interruptions", "Defects", "Others");
+	deliverableCombo.setItems(FXCollections.observableArrayList("Conceptual Design", "Detailed Design", "Test Cases", "Solution", "Reflection", "Outline", "Draft", "Report", "User Defined", "Other");
     }
     
     // This method starts the activity and starts the timer.
@@ -90,7 +93,7 @@ public class LogConsoleController implements Initializable {
 	        
     }
 
-    private void storeActivityDataInDatabase(String project) {
+    private void storeActivityDataInDatabase(String project, String lifeCycle, String effortCategory, String deliverable, long startTime, long endTime) {
         // Implement logic to store activity data in the database
     	
     }
