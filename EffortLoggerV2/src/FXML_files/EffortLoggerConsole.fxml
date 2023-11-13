@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" 
-	prefWidth="862.0" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LogConsoleController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="862.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LogConsoleController">
    <children>
       <Line endX="748.5" endY="-3.814697265625E-6" layoutX="115.0" layoutY="44.0" startX="-175.79998779296875" startY="-3.814697265625E-6" />
       <Text layoutX="273.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Effort Logger Console" textAlignment="CENTER">
@@ -30,7 +27,7 @@
             <Font name="Verdana Bold" size="12.0" />
          </font>
       </Text>
-      <Button layoutX="60.0" layoutY="139.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="200.0" text="Start an activity">
+      <Button fx:id="startButton" layoutX="60.0" layoutY="139.0" mnemonicParsing="false" onAction="#startActivity" prefHeight="28.0" prefWidth="200.0" text="Start an activity">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
@@ -45,76 +42,27 @@
             <Font name="Verdana Bold" size="12.0" />
          </font>
       </Text>
-      <SplitMenuButton layoutX="60.0" layoutY="233.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="362.0" text="Development Project">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Business Project" />
-          <MenuItem mnemonicParsing="false" text="Development Project" />
-        </items>
-      </SplitMenuButton>
       <Text layoutX="450.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Life Cycle Step:">
          <font>
             <Font name="Verdana Bold" size="12.0" />
          </font>
       </Text>
-      <SplitMenuButton layoutX="450.0" layoutY="233.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="362.0" text="Problem Understanding">
-         <items>
-            <MenuItem mnemonicParsing="false" text="Problem Understanding" />
-            <MenuItem mnemonicParsing="false" text="Conceptual Design Plan" />
-            <MenuItem mnemonicParsing="false" text="Requirements" />
-            <MenuItem mnemonicParsing="false" text="Conceptual Design" />
-            <MenuItem mnemonicParsing="false" text="Conceptual Design Review" />
-            <MenuItem mnemonicParsing="false" text="Detailed Design Plan" />
-            <MenuItem mnemonicParsing="false" text="Detailed Design Review" />
-            <MenuItem mnemonicParsing="false" text="Implementation Plan" />
-            <MenuItem mnemonicParsing="false" text="Test Case Generation" />
-            <MenuItem mnemonicParsing="false" text="Solution Specification" />
-            <MenuItem mnemonicParsing="false" text="Solution Review" />
-            <MenuItem mnemonicParsing="false" text="Solution Implementation" />
-            <MenuItem mnemonicParsing="false" text="Unit System Test" />
-            <MenuItem mnemonicParsing="false" text="Reflection" />
-            <MenuItem mnemonicParsing="false" text="Repository Update" />
-            
-         </items>
-      </SplitMenuButton>
       <Text layoutX="60.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Effort Category:">
          <font>
             <Font name="Verdana Bold" size="12.0" />
          </font>
       </Text>
-      <SplitMenuButton layoutX="60.0" layoutY="300.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="252.0" text="Deliverables">
-         <items>
-            <MenuItem mnemonicParsing="false" text="Plans" />
-            <MenuItem mnemonicParsing="false" text="Deliverables" />
-            <MenuItem mnemonicParsing="false" text="Interruptions" />
-            <MenuItem mnemonicParsing="false" text="Defects" />
-            <MenuItem mnemonicParsing="false" text="Others" />
-         </items>
-      </SplitMenuButton>
       <Text layoutX="336.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Deliverable:">
          <font>
             <Font name="Verdana Bold" size="12.0" />
          </font>
       </Text>
-      <SplitMenuButton layoutX="336.0" layoutY="299.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="476.0" text="Conceptual Design">
-         <items>
-            <MenuItem mnemonicParsing="false" text="Conceptual Design" />
-            <MenuItem mnemonicParsing="false" text="Detailed Design" />
-            <MenuItem mnemonicParsing="false" text="Test Cases" />
-            <MenuItem mnemonicParsing="false" text="Solution" />
-            <MenuItem mnemonicParsing="false" text="Reflection" />
-            <MenuItem mnemonicParsing="false" text="Outline" />
-            <MenuItem mnemonicParsing="false" text="Draft" />
-            <MenuItem mnemonicParsing="false" text="Report" />
-            <MenuItem mnemonicParsing="false" text="User Defined" />
-            <MenuItem mnemonicParsing="false" text="Other" />
-         </items>
-      </SplitMenuButton>
       <Text layoutX="28.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Press the &quot;Stop this Activity&quot;  to generate an effort log entry using the attributes above.">
          <font>
             <Font name="Verdana Bold" size="12.0" />
          </font>
       </Text>
-      <Button layoutX="60.0" layoutY="413.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="200.0" text="Stop this activity">
+      <Button fx:id="stopButton" layoutX="60.0" layoutY="413.0" mnemonicParsing="false" onAction="#stopActivity" prefHeight="28.0" prefWidth="200.0" text="Stop this activity">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
@@ -124,27 +72,36 @@
             <Font name="Verdana Bold" size="12.0" />
          </font>
       </Text>
-      <Button onAction="#goToEditor" layoutX="29.0" layoutY="474.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="200.0" text="Effort Log Editor">
+      <Button fx:id="editorButton" layoutX="29.0" layoutY="474.0" mnemonicParsing="false" onAction="#goToEditor" prefHeight="28.0" prefWidth="159.0" text="Effort Log Editor">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
       </Button>
-      <Button onAction="#goToDefectConsole" layoutX="243.0" layoutY="474.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="200.0" text="Defect Log Console">
+      <Button fx:id="defectButton" layoutX="206.0" layoutY="474.0" mnemonicParsing="false" onAction="#goToDefectConsole" prefHeight="28.0" prefWidth="159.0" text="Defect Log Console">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="461.0" layoutY="474.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="129.0" text="Definitions">
+      <Button fx:id="definitionsButton" layoutX="385.0" layoutY="474.0" mnemonicParsing="false" onAction="#goToDefinitions" prefHeight="28.0" prefWidth="129.0" text="Definitions">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="611.0" layoutY="474.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="200.0" text="Effort and Defect Logs">
+      <Button fx:id="logsButton" layoutX="531.0" layoutY="474.0" mnemonicParsing="false" onAction="#goToLogs" prefHeight="28.0" prefWidth="130.0" text="Logs">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
       </Button>
       <Text layoutX="4.0" layoutY="523.0" strokeType="OUTSIDE" strokeWidth="0.0" text="V2.0 2023-10-29" />
       <Text layoutX="661.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\@ Copyright 2009 Lynn Robert Carter" />
+      <Button fx:id="homeButton" layoutX="678.0" layoutY="474.0" mnemonicParsing="false" onAction="#goHome" prefHeight="26.0" prefWidth="123.0" text="Home">
+         <font>
+            <Font name="Verdana" size="14.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="projectCombo" layoutX="60.0" layoutY="234.0" prefHeight="26.0" prefWidth="346.0" />
+      <ComboBox fx:id="lifeCycleCombo" layoutX="450.0" layoutY="235.0" prefHeight="26.0" prefWidth="362.0" />
+      <ComboBox fx:id="effortCategoryCombo" layoutX="60.0" layoutY="300.0" prefHeight="26.0" prefWidth="236.0" />
+      <ComboBox fx:id="deliverableCombo" layoutX="337.0" layoutY="300.0" prefHeight="26.0" prefWidth="476.0" />
    </children>
 </AnchorPane>

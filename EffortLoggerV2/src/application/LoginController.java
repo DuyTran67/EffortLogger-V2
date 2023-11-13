@@ -93,19 +93,18 @@ public class LoginController {
     	}
         fileReader.close();
         
-        for (List<String> curr : records) {
-        	// turn input password into encrypted form and compare
-        	try {
-				byte[] encryptedPW = aes.encrypt(password);
-				password = Base64.getEncoder().encodeToString(encryptedPW);				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-        	if (username.equals(curr.get(0)) && password.equals(curr.get(1))) {
-        		return true;
-        	}
-        }
+    	// turn input password into encrypted form and compare
+    	try {
+    		byte[] encryptedPW = aes.encrypt(password);
+	        for (List<String> curr : records) {
+					password = Base64.getEncoder().encodeToString(encryptedPW);				
+	        	if (username.equals(curr.get(0)) && password.equals(curr.get(1))) {
+	        		return true;
+	        	}
+	        }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 	

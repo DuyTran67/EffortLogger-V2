@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="751.0" prefWidth="1034.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DefinitionsController">
+   <children>
+      <Text layoutX="335.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EffortLogger Definitions Page">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Text>
+      <Line endX="926.0" endY="3.814697265625E-6" layoutX="108.0" layoutY="50.0" startX="-108.00001525878906" startY="3.814697265625E-6" />
+      <Text layoutX="14.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Project Names and their Life Cycles">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="14.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1a. Specific Project Names">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="283.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1b. Specific Life Cycle steps for each Project">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="324.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Effort Categories:">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="325.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4. Plans:">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Text>
+      <TextArea layoutX="324.0" layoutY="420.0" prefHeight="106.0" prefWidth="366.0" text="Project Plan&#10;Risk Management Plan&#10;Conceptual Design Plan&#10;Detailed Design Plan&#10;Implementation Plan" />
+      <Text layoutX="700.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DO NOT modify Effort Categories." />
+      <Text layoutX="700.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="These names and order can be changed at will. Enter new items in a new line." wrappingWidth="291.2235107421875" />
+      <Text layoutX="325.0" layoutY="547.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5. Deliverables:">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="testTextArea" layoutX="70.0" layoutY="269.0" prefHeight="200.0" prefWidth="200.0" text="a&#10;b&#10;c&#10;d&#10;e&#10;f&#10;g" />
+      <Button fx:id="testButton" layoutX="142.0" layoutY="471.0" mnemonicParsing="false" onAction="#test" text="Button" />
+      <TextArea layoutX="324.0" layoutY="301.0" prefHeight="94.0" prefWidth="366.0" text="Plans&#10;Deliverables&#10;Interruptions&#10;Defects&#10;Others" />
+      <TextArea layoutX="324.0" layoutY="550.0" prefHeight="106.0" prefWidth="365.0" text="Conceptual Design&#10;Detailed Design&#10;Test Cases&#10;Solution&#10;Reflection&#10;Outline&#10;Draft&#10;Report&#10;User Defined&#10;Other" />
+      <Text layoutX="700.0" layoutY="563.0" strokeType="OUTSIDE" strokeWidth="0.0" text="These names and order can be changed at will. Enter new items in a new line." wrappingWidth="291.2235107421875" />
+   </children>
+</AnchorPane>
