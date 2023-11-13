@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+    <children>
+        <Label text="Effort Log for Project 1: Business Project" style="-fx-font-size: 18px;" />
+       
+        <GridPane>
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label text="Number" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                <Label text="Date" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+                <Label text="Start Time" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+                <Label text="Stop Time" GridPane.rowIndex="0" GridPane.columnIndex="3" />
+
+                <TextField fx:id="numberField" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                <DatePicker fx:id="datePicker" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+                <TextField fx:id="startTimeField" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+                <TextField fx:id="stopTimeField" GridPane.rowIndex="1" GridPane.columnIndex="3" />
+            </children>
+        </GridPane>
+
+        <GridPane>
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label text="Time Delta" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                <Label text="Life Cycle Step" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+                <Label text="Category" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+                <Label text="Deliverable / Interruption / etc." GridPane.rowIndex="0" GridPane.columnIndex="3" />
+
+                <TextField fx:id="timeDeltaField" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                <ChoiceBox fx:id="lifeCycleStepChoice" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+                <ChoiceBox fx:id="categoryChoice" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+                <TextArea fx:id="deliverableTextArea" GridPane.rowIndex="1" GridPane.columnIndex="3" />
+            </children>
+        </GridPane>
+
+        <Label text="Defect Log for Project 1: Business Project" style="-fx-font-size: 18px;" />
+
+        <GridPane>
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label text="Number" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                <Label text="Name" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+                <Label text="Detail" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+                <Label text="Injected" GridPane.rowIndex="0" GridPane.columnIndex="3" />
+
+                <TextField fx:id="defectNumberField" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                <TextField fx:id="defectNameField" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+                <TextArea fx:id="defectDetailTextArea" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+                <CheckBox fx:id="injectedCheckBox" GridPane.rowIndex="1" GridPane.columnIndex="3" />
+            </children>
+        </GridPane>
+
+        <GridPane>
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label text="Removed" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                <Label text="Category" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+                <Label text="Status" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+                <Label text="Fix" GridPane.rowIndex="0" GridPane.columnIndex="3" />
+
+                <CheckBox fx:id="removedCheckBox" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                <ChoiceBox fx:id="defectCategoryChoice" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+                <ChoiceBox fx:id="defectStatusChoice" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+            </children>
+        </GridPane>
+       
+        <Button text="Save" onAction="#saveLog" style="-fx-font-size: 18px;"/>
+    </children>
+</VBox>

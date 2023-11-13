@@ -1,9 +1,8 @@
 package application;
 
-/***** Mainline class for the EffortLogger V2 project. Calls all the function and invokes the login mechanism.
+/***** Mainline class for the EffortLogger V2 project. Calls all the function and invokes the login mechanism. 
+ *****DO NOT CHANGE*****
  * 
- * 
- * @author: Duy Tran
  * 
  */
 
