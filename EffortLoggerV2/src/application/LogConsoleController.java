@@ -17,6 +17,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class LogConsoleController implements Initializable {
     @FXML
@@ -93,9 +97,33 @@ public class LogConsoleController implements Initializable {
 	        
     }
 
-    private void storeActivityDataInDatabase(String project, String lifeCycle, String effortCategory, String deliverable, long startTime, long endTime) {
-        // Implement logic to store activity data in the database
-    	
+    // Establish a database connection. Replace with your actual database connection logic.
+    private static Connection establishConnection() throws SQLException {
+        String url = "jdbc:mysql://localhost:3306/your_database";
+        String username = "your_username";
+        String password = "your_password";
+        return DriverManager.getConnection(url, username, password);
+    }
+
+    // Store activity data in the database
+    public static void storeActivityDataInDatabase(String project, String lifeCycle, String effortCategory, String deliverable, long startTime, long endTime) {
+        try (Connection connection = establishConnection()) {
+            if (connection != null) {
+                String sql = "INSERT INTO activity_log (project, life_cycle, effort_category, deliverable, start_time, end_time) VALUES (?, ?, ?, ?, ?, ?)";
+                try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                    preparedStatement.setString(1, project);
+                    preparedStatement.setString(2, lifeCycle);
+                    preparedStatement.setString(3, effortCategory);
+                    preparedStatement.setString(4, deliverable);
+                    preparedStatement.setLong(5, startTime);
+                    preparedStatement.setLong(6, endTime);
+
+                    preparedStatement.executeUpdate();
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle or log the exception according to your application's error-handling strategy
+        }
     }
 
     // The following methods are to navigate to other pages
