@@ -11,6 +11,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,6 +23,11 @@ public class LogConsoleController implements Initializable {
     private Button startButton, stopButton, editorButton, defectButton, definitionsButton, logsButton, homeButton;
     @FXML
     private ComboBox<String> projectCombo, lifeCycleCombo, effortCategoryCombo, deliverableCombo;
+    
+    @FXML
+    private Text clockText;
+    @FXML
+    private Rectangle clockRectangle;
     
     private long startTime;
     private long endTime;
@@ -41,6 +49,9 @@ public class LogConsoleController implements Initializable {
     private void startActivity(ActionEvent event) {
     	System.out.println("Activity started");
 		startTime = System.nanoTime();        
+		clockText.setText("Clock is running");
+		clockRectangle.setFill(Color.web("0x0dff3e", 1.0));
+		clockRectangle.setStroke(Color.web("0x0dff3e", 1.0));
     }
 
     // This method stops the activity, record all the data, store them, stop the timer, and display activity time elapsed.
@@ -61,6 +72,9 @@ public class LogConsoleController implements Initializable {
             alert.showAndWait();
             // Store the data in the database
         } else {
+    		clockText.setText("Clock is stopped");
+    		clockRectangle.setFill(Color.RED);
+    		clockRectangle.setStroke(Color.RED);
             System.out.println("Activity stopped");
         	storeActivityDataInDatabase(stoppedProject);
 
