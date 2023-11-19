@@ -1,9 +1,8 @@
 package application;
 
-import javafx.collections.FXCollections;
+import javafx.collections.FXCollections; 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-<<<<<<< HEAD
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -12,23 +11,27 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.SplitMenuButton;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
-=======
-import javafx.scene.control.SplitMenuButton;
-import java.util.Arrays;
-import java.util.List;
->>>>>>> refs/remotes/origin/main
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-<<<<<<< HEAD
 public class LogConsoleController implements Initializable {
     @FXML
     private Button startButton, stopButton, editorButton, defectButton, definitionsButton, logsButton, homeButton;
     @FXML
     private ComboBox<String> projectCombo, lifeCycleCombo, effortCategoryCombo, deliverableCombo;
+    
+    @FXML
+    private Text clockText;
+    @FXML
+    private Rectangle clockRectangle;
     
     private long startTime;
     private long endTime;
@@ -43,6 +46,9 @@ public class LogConsoleController implements Initializable {
     	// Later on, implement ArrayList<String> projects = new ArrayList<>();  from definitions 
     	projectCombo.setItems(FXCollections.observableArrayList("Development Project", "Business Project"));
     	// Load other combo boxes
+    	lifeCycleCombo.setItems(FXCollections.observableArrayList("Problem Understanding", "Conceptual Design Plan", "Requirements", "Conceptual Design", "Conceptual Design Review", "Detailed Design Plan", "Detailed Design/Prototype", "Detailed Design Review", "Implementation plan", "Test Case Generation", "Solution Specification", "Solution Review", "Solution Implementation", "Unit/System Test", "Reflection", "Repository Update"));
+    	effortCategoryCombo.setItems(FXCollections.observableArrayList("Plans", "Deliverables", "Interruptions", "Defects", "Others"));
+    	deliverableCombo.setItems(FXCollections.observableArrayList("Conceptual Design", "Detailed Design", "Test Cases", "Solution", "Reflection", "Outline", "Draft", "Report", "User Defined", "Other"));
     }
     
     // This method starts the activity and starts the timer.
@@ -50,6 +56,9 @@ public class LogConsoleController implements Initializable {
     private void startActivity(ActionEvent event) {
     	System.out.println("Activity started");
 		startTime = System.nanoTime();        
+		clockText.setText("Clock is running");
+		clockRectangle.setFill(Color.web("0x0dff3e", 1.0));
+		clockRectangle.setStroke(Color.web("0x0dff3e", 1.0));
     }
 
     // This method stops the activity, record all the data, store them, stop the timer, and display activity time elapsed.
@@ -70,8 +79,11 @@ public class LogConsoleController implements Initializable {
             alert.showAndWait();
             // Store the data in the database
         } else {
+    		clockText.setText("Clock is stopped");
+    		clockRectangle.setFill(Color.RED);
+    		clockRectangle.setStroke(Color.RED);
             System.out.println("Activity stopped");
-        	storeActivityDataInDatabase(stoppedProject);
+        	storeActivityDataInDatabase(stoppedProject, stoppedLifeCycle, stoppedEffortCategory, stoppedDeliverable, startTime, endTime);
 
 	        endTime = System.nanoTime();
 	        long timeElapsed = (endTime - startTime) / 1000000000;
@@ -85,9 +97,33 @@ public class LogConsoleController implements Initializable {
 	        
     }
 
-    private void storeActivityDataInDatabase(String project) {
-        // Implement logic to store activity data in the database
-    	
+    // Establish a database connection. Replace with your actual database connection logic.
+    private static Connection establishConnection() throws SQLException {
+        String url = "jdbc:mysql://localhost:3306/your_database";
+        String username = "your_username";
+        String password = "your_password";
+        return DriverManager.getConnection(url, username, password);
+    }
+
+    // Store activity data in the database
+    public static void storeActivityDataInDatabase(String project, String lifeCycle, String effortCategory, String deliverable, long startTime, long endTime) {
+        try (Connection connection = establishConnection()) {
+            if (connection != null) {
+                String sql = "INSERT INTO activity_log (project, life_cycle, effort_category, deliverable, start_time, end_time) VALUES (?, ?, ?, ?, ?, ?)";
+                try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                    preparedStatement.setString(1, project);
+                    preparedStatement.setString(2, lifeCycle);
+                    preparedStatement.setString(3, effortCategory);
+                    preparedStatement.setString(4, deliverable);
+                    preparedStatement.setLong(5, startTime);
+                    preparedStatement.setLong(6, endTime);
+
+                    preparedStatement.executeUpdate();
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle or log the exception according to your application's error-handling strategy
+        }
     }
 
     // The following methods are to navigate to other pages
@@ -111,55 +147,8 @@ public class LogConsoleController implements Initializable {
 		stage.setScene(scene);
 		stage.setTitle("EffortLogger V2");
 		stage.show();
-=======
-public class LogConsoleController {
-
-    @FXML
-    private SplitMenuButton projectSplitMenuButton;
-
-    @FXML
-    private SplitMenuButton lifeCycleSplitMenuButton;
-
-    @FXML
-    private SplitMenuButton effortCategorySplitMenuButton;
-
-    @FXML
-    private SplitMenuButton deliverableSplitMenuButton;
-
-    // Placeholder methods, you need to implement the actual logic
-
-    @FXML
-    private void startActivity(ActionEvent event) {
-	System.out.println("Activity started");
-
-        // Load or refresh data for project, life cycle, effort category, deliverable, etc.
-        loadProjects();
-        loadLifeCycles();
-        loadEffortCategories();
-        loadDeliverables();
     }
-
-    @FXML
-    private void stopActivity(ActionEvent event) {
-        // Implement logic to stop an activity and store in the database
-        String stoppedProject = projectSplitMenuButton.getText();
-        String stoppedLifeCycle = lifeCycleSplitMenuButton.getText();
-        String stoppedEffortCategory = effortCategorySplitMenuButton.getText();
-        String stoppedDeliverable = deliverableSplitMenuButton.getText();
-	    
-        // Store the stopped activity information in the database
-        storeActivityDataInDatabase(stoppedProject, stoppedLifeCycle, stoppedEffortCategory, stoppedDeliverable);
-
-        // Display a confirmation message
-        showAlert("Activity Stopped", "Activity stopped and logged successfully.");
-    }
-
-    private void storeActivityDataInDatabase(/* pass necessary parameters */) {
-        // Implement logic to store activity data in the database
->>>>>>> refs/remotes/origin/main
-    }
-	
-<<<<<<< HEAD
+		
     @FXML
     private void goToDefinitions(ActionEvent event) throws Exception {
         // Implement logic to navigate to the Definitions
@@ -179,81 +168,8 @@ public class LogConsoleController {
 		stage.setScene(scene);
 		stage.setTitle("EffortLogger V2");
 		stage.show();
-=======
-	private void showAlert(String title, String content) {
-	        // Helper method to display an alert
-	        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-	        alert.setTitle(title);
-	        alert.setHeaderText(null);
-	        alert.setContentText(content);
-	        alert.showAndWait();
-	    }
+	}
 
-    private void loadProjects() {
-        // Simulate fetching projects from the database. Replace this with your actual database logic.
-        List<String> projects = List.of("Development Project", "Business Project");
-
-        // Clear existing items in the menu button
-        projectSplitMenuButton.getItems().clear();
-
-        // Populate the menu button with projects
-        for (String project : projects) {
-            MenuItem menuItem = new MenuItem(project);
-            projectSplitMenuButton.getItems().add(menuItem);
-        }
-    }
-
-    private void loadLifeCycles() {
-        List<String> projects = List.of("Problem Understanding", "Conceptual Design Plan", "Requirements", "Conceptual Design", "Conceptual Design Review", "Detailed Design Plan", "Detailed Design Review", "Implementation Plan", "Test Case Generation", "Solution Specification", "Solution Review", "Solution Implementation", "Unit System Test", "Reflection", "Repository Update");
-
-        // Clear existing items in the menu button
-        projectSplitMenuButton.getItems().clear();
-
-        // Populate the menu button with projects
-        for (String project : projects) {
-            MenuItem menuItem = new MenuItem(project);
-            projectSplitMenuButton.getItems().add(menuItem);
-        }
-    }
-
-    private void loadEffortCategories() {
-        List<String> projects = List.of("Deliverables", "Plans", "Interruptions", "Defects", "Others");
-
-        // Clear existing items in the menu button
-        projectSplitMenuButton.getItems().clear();
-
-        // Populate the menu button with projects
-        for (String project : projects) {
-            MenuItem menuItem = new MenuItem(project);
-            projectSplitMenuButton.getItems().add(menuItem);
-        }
-    }
-
-    private void loadDeliverables() {
-        List<String> projects = List.of("Conceptual Design", "Detailed Design", "Test Cases", "Solution", "Reflection", "Outline", "Draft", "Report", "User Defined", "Other");
-
-        // Clear existing items in the menu button
-        projectSplitMenuButton.getItems().clear();
-
-        // Populate the menu button with projects
-        for (String project : projects) {
-            MenuItem menuItem = new MenuItem(project);
-            projectSplitMenuButton.getItems().add(menuItem);
-        }
-    }
-
-    @FXML
-    private void goToEditor(ActionEvent event) {
-        // Implement logic to navigate to the Effort Log Editor
-    }
-
-    @FXML
-    private void goToDefectConsole(ActionEvent event) {
-        // Implement logic to navigate to the Defect Log Console
->>>>>>> refs/remotes/origin/main
-    }
-	
-<<<<<<< HEAD
 	@FXML
     private void goHome(ActionEvent event) throws Exception {
         // Implement logic to navigate to the Effort and Defect Logs
@@ -264,16 +180,4 @@ public class LogConsoleController {
 		stage.setTitle("EffortLogger V2");
 		stage.show();
     }
-    
 }
-=======
-    @FXML
-    private void goToDefinitions(ActionEvent event) {
-        // Implement logic to navigate to the Definitions
-    }
-	@FXML
-    private void goToEffortandDefectLogs(ActionEvent event) {
-        // Implement logic to navigate to the Effort and Defect Logs
-    }
-}
->>>>>>> refs/remotes/origin/main

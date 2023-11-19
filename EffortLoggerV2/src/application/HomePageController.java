@@ -65,7 +65,7 @@ public class HomePageController {
 	}
 	
 	public void goToPoker(ActionEvent event) throws IOException {
-		root = FXMLLoader.load(getClass().getResource("/FXML_files/PlanningPokerStart.fxml"));
+		root = FXMLLoader.load(getClass().getResource("/planningpoker/PlanningPokerStart.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
