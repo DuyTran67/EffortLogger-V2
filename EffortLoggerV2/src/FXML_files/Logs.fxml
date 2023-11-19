@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
-</AnchorPane>
-
+<VBox fx:controller="your.package.LogsController" xmlns:fx="http://javafx.com/fxml">
+    <Label text="Logs" style="-fx-font-family: 'Verdana'; -fx-font-size: 20; -fx-font-weight: bold;" />
+    <TableView fx:id="logsTable">
+        <columns>
+            <TableColumn fx:id="numberColumn" text="Number" />
+            <TableColumn fx:id="dateColumn" text="Date" />
+            <TableColumn fx:id="startTimeColumn" text="Start Time" />
+            <TableColumn fx:id="stopTimeColumn" text="Stop Time" />
+            <TableColumn fx:id="timeDeltaColumn" text="Time Delta" />
+            <TableColumn fx:id="lifeCycleStepColumn" text="Life Cycle Step" />
+            <TableColumn fx:id="categoryColumn" text="Category" />
+            <TableColumn fx:id="deliverableColumn" text="Deliverable / Interruption / etc." />
+            <TableColumn fx:id="defectNumberColumn" text="Defect Number" />
+            <TableColumn fx:id="defectNameColumn" text="Defect Name" />
+            <TableColumn fx:id="defectDetailColumn" text="Defect Detail" />
+            <TableColumn fx:id="defectInjectedColumn" text="Defect Injected" />
+            <TableColumn fx:id="defectRemovedColumn" text="Defect Removed" />
+            <TableColumn fx:id="defectCategoryColumn" text="Defect Category" />
+            <TableColumn fx:id="defectStatusColumn" text="Defect Status" />
+        </columns>
+    </TableView>
+    <Button text="Add Entry" onAction="#addEntry" />
+</VBox>
