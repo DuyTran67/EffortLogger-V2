@@ -62,7 +62,6 @@ public class RegisterController {
             alert.showAndWait();
         // user entered all required credentials
 		} else {
-			// username already exists
             // username or password is too short or too long
 			if (!(username.length() >= 4 && username.length() <= 32 && password1.length() >= 4 && password1.length() <= 32)) {
 				Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -70,6 +69,7 @@ public class RegisterController {
                 alert.setHeaderText(null);
                 alert.setContentText("username or password is too short or too long.");
                 alert.showAndWait();
+			// username already exists
 			} else if (usernameExists(username)) {
 				Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
@@ -95,6 +95,39 @@ public class RegisterController {
 				}
 			}
 		}
+	}
+	
+	public boolean createAccountTest(String username, String password1, String password2) throws Exception {		
+		// user did not enter in one or more fields
+		if (username.isEmpty() || password1.isEmpty() || password2.isEmpty()) {
+			return false;
+        // user re-entered password does not match
+		} else if (!password1.equals(password2)) {
+			return false;
+        // user entered all required credentials
+		} else {
+
+            // username or password is too short or too long
+			if (!(username.length() >= 4 && username.length() <= 32 && password1.length() >= 4 && password1.length() <= 32)) {
+				return false;
+			// username already exists
+			} else if (usernameExists(username)) {
+				return false;
+            // No problems. Add account
+			} else {
+				// before creating a new account, encrypt password
+				byte[] encryptedData = aes.encrypt(password1);
+				password1 = Base64.getEncoder().encodeToString(encryptedData);
+				Account newAccount = new Account(username, password1);
+				// save account info to csv file
+				try {
+					saveAccount(newAccount);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return true;
 	}
 	
 	// method to check if username already exists by reading the csv file and storing the information into an arraylist.

@@ -46,15 +46,9 @@ public class LogConsoleController implements Initializable {
     	// Later on, implement ArrayList<String> projects = new ArrayList<>();  from definitions 
     	projectCombo.setItems(FXCollections.observableArrayList("Development Project", "Business Project"));
     	// Load other combo boxes
-<<<<<<< HEAD
     	lifeCycleCombo.setItems(FXCollections.observableArrayList("Problem Understanding", "Conceptual Design Plan", "Requirements", "Conceptual Design", "Conceptual Design Review", "Detailed Design Plan", "Detailed Design/Prototype", "Detailed Design Review", "Implementation plan", "Test Case Generation", "Solution Specification", "Solution Review", "Solution Implementation", "Unit/System Test", "Reflection", "Repository Update"));
     	effortCategoryCombo.setItems(FXCollections.observableArrayList("Plans", "Deliverables", "Interruptions", "Defects", "Others"));
     	deliverableCombo.setItems(FXCollections.observableArrayList("Conceptual Design", "Detailed Design", "Test Cases", "Solution", "Reflection", "Outline", "Draft", "Report", "User Defined", "Other"));
-=======
-	lifeCycleCombo.setItems(FXCollections.observableArrayList("Problem Understanding", "Conceptual Design Plan", "Requirements", "Conceptual Design", "Conceptual Design Review", "Detailed Design Plan", "Detailed Design/Prototype", "Detailed Design Review", "Implementation plan", "Test Case Generation", "Solution Specification", "Solution Review", "Solution Implementation", "Unit/System Test", "Reflection", "Repository Update");
-	effortCategoryCombo.setItems(FXCollections.observableArrayList("Plans", "Deliverables", "Interruptions", "Defects", "Others");
-	deliverableCombo.setItems(FXCollections.observableArrayList("Conceptual Design", "Detailed Design", "Test Cases", "Solution", "Reflection", "Outline", "Draft", "Report", "User Defined", "Other");
->>>>>>> refs/remotes/origin/main
     }
     
     // This method starts the activity and starts the timer.
@@ -103,33 +97,11 @@ public class LogConsoleController implements Initializable {
 	        
     }
 
-    // Establish a database connection. Replace with your actual database connection logic.
-    private static Connection establishConnection() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/your_database";
-        String username = "your_username";
-        String password = "your_password";
-        return DriverManager.getConnection(url, username, password);
-    }
+
 
     // Store activity data in the database
     public static void storeActivityDataInDatabase(String project, String lifeCycle, String effortCategory, String deliverable, long startTime, long endTime) {
-        try (Connection connection = establishConnection()) {
-            if (connection != null) {
-                String sql = "INSERT INTO activity_log (project, life_cycle, effort_category, deliverable, start_time, end_time) VALUES (?, ?, ?, ?, ?, ?)";
-                try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                    preparedStatement.setString(1, project);
-                    preparedStatement.setString(2, lifeCycle);
-                    preparedStatement.setString(3, effortCategory);
-                    preparedStatement.setString(4, deliverable);
-                    preparedStatement.setLong(5, startTime);
-                    preparedStatement.setLong(6, endTime);
 
-                    preparedStatement.executeUpdate();
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace(); // Handle or log the exception according to your application's error-handling strategy
-        }
     }
 
     // The following methods are to navigate to other pages

@@ -6,11 +6,12 @@ package application;
  * 
  */
 
-import javafx.application.Application;       
+import javafx.application.Application;        
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import org.h2.engine.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,14 +23,15 @@ public class MainEffortLogger extends Application {
 	@Override
 	public void start(Stage stage) {
 		try {
+			// DBConnection db = new DBConnection();
 			// starting screen
-			Parent root1 = FXMLLoader.load(getClass().getResource("/FXML_files/LoginPage.fxml"));
+			Parent root1 = FXMLLoader.load(getClass().getResource("/FXML_files/EffortLogger.fxml"));
 			Scene scene1 = new Scene(root1);
 			stage.setScene(scene1);
 			stage.setTitle("EffortLogger V2");
 			stage.show();
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.printStackTrace();			
 		}
 	}
 	

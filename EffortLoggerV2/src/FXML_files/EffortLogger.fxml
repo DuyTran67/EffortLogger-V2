@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="862.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EffortLogger">
+  <tabs>
+    <Tab fx:id="logConsoleTab" text="Log Console">
+      <content>
+      	<fx:include source="LogConsole.fxml"/>
+      </content>
+    </Tab>
+    <Tab fx:id="defectConsoleTab" text="Defect Console">
+      <content>
+        <fx:include source="DefectConsole.fxml"/>
+      </content>
+    </Tab>
+      <Tab fx:id="logEditorTab" text="Log Editor">
+        <content>
+          <fx:include source="EffortLogEditor.fxml"/>
+        </content>
+      </Tab>
+      <Tab fx:id="logsTab" text="Logs">
+        <content>
+          <fx:include source="Logs.fxml"/>
+        </content>
+      </Tab>
+      <Tab fx:id="definitionsTab" text="Definitions">
+        <content>
+          <fx:include source="Definitions.fxml"/>
+        </content>
+      </Tab>
+      <Tab text="Planning Poker">
+        <content>
+         	<fx:include source="PlanningPokerStart.fxml"/>
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>
