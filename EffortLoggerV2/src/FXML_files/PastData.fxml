@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PastDataController">
+   <children>
+      <Label layoutX="218.0" layoutY="14.0" text="Past Stories">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="18.0" layoutY="103.0" text="Project" />
+      <Label layoutX="564.0" layoutY="84.0" prefHeight="37.0" prefWidth="64.0" text="Story &#10;Points" />
+      <Label layoutX="422.0" layoutY="103.0" text="User Story" />
+      <TextArea fx:id="projects" editable="false" layoutX="4.0" layoutY="121.0" prefHeight="240.0" prefWidth="64.0" />
+      <TextArea fx:id="points" editable="false" layoutX="554.0" layoutY="121.0" prefHeight="240.0" prefWidth="24.0" />
+      <TextArea fx:id="story" editable="false" layoutX="342.0" layoutY="121.0" prefHeight="240.0" prefWidth="215.0" />
+      <Button fx:id="back" layoutX="12.0" layoutY="361.0" mnemonicParsing="false" onAction="#exit" text="Back" />
+      <Button fx:id="el_btn" layoutX="502.0" layoutY="361.0" mnemonicParsing="false" onAction="#EL" text="EffortLogger" />
+      <Button fx:id="setup" layoutX="506.0" layoutY="57.0" mnemonicParsing="false" onAction="#set" text="Get Stories" />
+      <TextArea fx:id="step" editable="false" layoutX="68.0" layoutY="121.0" prefHeight="240.0" prefWidth="82.0" />
+      <Label layoutX="97.0" layoutY="103.0" text="Step" />
+      <Label layoutX="167.0" layoutY="103.0" text="Category" />
+      <TextArea fx:id="category" editable="false" layoutX="150.0" layoutY="121.0" prefHeight="240.0" prefWidth="82.0" />
+      <TextField fx:id="word" layoutX="318.0" layoutY="58.0" />
+      <ComboBox fx:id="point_select" layoutX="92.0" layoutY="57.0" prefHeight="26.0" prefWidth="82.0" promptText="Points" />
+      <Label layoutX="12.0" layoutY="61.0" text="Select Points:" />
+      <Label layoutX="218.0" layoutY="62.0" text="Enter Key Word" />
+      <Label layoutX="260.0" layoutY="103.0" text="Key words" />
+      <TextArea fx:id="keywords" editable="false" layoutX="232.0" layoutY="121.0" prefHeight="240.0" prefWidth="110.0" />
+      <Button fx:id="set" layoutX="11.0" layoutY="14.0" mnemonicParsing="false" onAction="#setup" text="Set up" />
+   </children>
+</AnchorPane>
