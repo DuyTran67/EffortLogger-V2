@@ -6,7 +6,7 @@ package application;
  * 
  */
 
-import javafx.application.Application;        
+import javafx.application.Application;         
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -16,14 +16,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import java.io.IOException;
+import java.sql.Connection;
+
 import javafx.scene.control.*;
 import javafx.scene.Parent;
 
 public class MainEffortLogger extends Application {
+	private static Connection connection;
+	
 	@Override
 	public void start(Stage stage) {
 		try {
-			DBConnection.getConnection();
+			// Connect to the database
+			DBConnection.getConnection(connection);
+			
 			// starting screen
 			FXMLLoader.load(getClass().getResource("/FXML_files/Definitions.fxml"));
 			Parent root = FXMLLoader.load(getClass().getResource("/FXML_files/EffortLogger.fxml"));

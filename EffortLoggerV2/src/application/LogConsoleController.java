@@ -15,12 +15,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class LogConsoleController implements Initializable {
     @FXML
@@ -40,14 +44,23 @@ public class LogConsoleController implements Initializable {
     private Scene scene;
     private Stage stage;
     
+    private DefinitionsController def_page = new DefinitionsController();
+    
     
     // This method loads in all the combobox items
     @Override
     public void initialize(URL url, ResourceBundle resourcebundle) {
+    	try {
+			FXMLLoader.load(getClass().getResource("/FXML_files/Definitions.fxml"));
+    	//ArrayList<String> deli = def_page.getDeliverables();
+    	//System.out.println("aa:" + deli.get(0));
     	projectCombo.setItems(FXCollections.observableArrayList("Development Project", "Business Project"));
     	lifeCycleCombo.setItems(FXCollections.observableArrayList("Problem Understanding", "Conceptual Design Plan", "Requirements", "Conceptual Design", "Conceptual Design Review", "Detailed Design Plan", "Detailed Design/Prototype", "Detailed Design Review", "Implementation plan", "Test Case Generation", "Solution Specification", "Solution Review", "Solution Implementation", "Unit/System Test", "Reflection", "Repository Update"));
     	effortCategoryCombo.setItems(FXCollections.observableArrayList("Plans", "Deliverables", "Interruptions", "Defects", "Others"));
     	deliverableCombo.setItems(FXCollections.observableArrayList("Conceptual Design", "Detailed Design", "Test Cases", "Solution", "Reflection", "Outline", "Draft", "Report", "User Defined", "Other"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
     
     // This method starts the activity and starts the timer.
@@ -99,7 +112,7 @@ public class LogConsoleController implements Initializable {
 
 
     // Store activity data in the database
-    public static void storeActivityDataInDatabase(String project, String lifeCycle, String effortCategory, String deliverable, long startTime, long endTime) {
+    public static void storeActivityDataInDatabase(Timestamp startTime, Timestamp endTime, String project, String lifeCycle, String effortCategory, String deliverable) {
 
     }
 
