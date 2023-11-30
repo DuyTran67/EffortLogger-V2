@@ -9,18 +9,22 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
 public class DefinitionsController {
-	@FXML
-	private TextArea planArea, deliverableArea, defectCategoryArea, interruptionArea, stepArea;
-	@FXML
-	private Button updateButton;
+	@FXML private TextArea planArea, deliverableArea, defectCategoryArea, interruptionArea, stepArea;
+	@FXML private Button updateButton;
 	private ArrayList<String> plans = new ArrayList<>();
 	private ArrayList<String> deliverables = new ArrayList<>();
 	private ArrayList<String> interruptions = new ArrayList<>();
 	private ArrayList<String> defectCategories = new ArrayList<>();
 	private HashMap<Integer, String> steps = new HashMap<>();
 	
+	// Call update when update button pressed
+	public void updatePressed(ActionEvent event) {
+		update();
+		System.out.println("Successfully updated definitions.");
+	}
+	
 	// This method updates all the data lists as the user enters or removes items
-	public void update(ActionEvent event) {
+	public void update() {
 		// Extract items from the text areas and add to the arraylists
 		for (String line : planArea.getText().split("\\n")) {
 			plans.add(line);
@@ -58,6 +62,4 @@ public class DefinitionsController {
 	public ArrayList<String> getDefectCategories() {
 		return defectCategories;
 	}
-	
-	
 }

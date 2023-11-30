@@ -3,18 +3,16 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="685.0" prefWidth="636.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DefinitionsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="862.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DefinitionsController">
    <children>
-      <Text layoutX="132.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EffortLogger Definitions Page">
+      <Text layoutX="240.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EffortLogger Definitions Page">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Text>
-      <Line endX="529.0" layoutX="107.0" layoutY="42.0" startX="-108.00001525878906" startY="3.814697265625E-6" />
       <Text layoutX="14.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Project Names and their Life Cycles">
          <font>
             <Font name="Verdana Bold" size="12.0" />
@@ -25,7 +23,7 @@
             <Font name="Verdana Bold" size="12.0" />
          </font>
       </Text>
-      <Text layoutX="283.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1b. Specific Life Cycle steps for each Project">
+      <Text layoutX="282.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1b. Specific Life Cycle steps for each Project">
          <font>
             <Font name="Verdana Bold" size="12.0" />
          </font>
@@ -35,47 +33,47 @@
             <Font name="Verdana Bold" size="12.0" />
          </font>
       </Text>
-      <Text layoutX="315.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4. Plans:">
+      <Text layoutX="14.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4. Plans:">
          <font>
             <Font name="Verdana Bold" size="12.0" />
          </font>
       </Text>
-      <TextArea fx:id="planArea" layoutX="314.0" layoutY="390.0" prefHeight="94.0" prefWidth="288.0" text="Project Plan&#10;Risk Management Plan&#10;Conceptual Design Plan&#10;Detailed Design Plan&#10;Implementation Plan" />
-      <Text layoutX="417.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DO NOT modify Effort Categories." />
-      <Text layoutX="315.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5. Deliverables:">
+      <TextArea fx:id="planArea" layoutX="14.0" layoutY="394.0" prefHeight="94.0" prefWidth="288.0" text="Project Plan&#10;Risk Management Plan&#10;Conceptual Design Plan&#10;Detailed Design Plan&#10;Implementation Plan" />
+      <Text layoutX="315.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DO NOT modify Effort Categories." />
+      <Text layoutX="315.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5. Deliverables:">
          <font>
             <Font name="Verdana Bold" size="12.0" />
          </font>
       </Text>
-      <TextArea fx:id="stepArea" layoutX="4.0" layoutY="250.0" prefHeight="94.0" prefWidth="288.0" text="Problem Understanding&#10;Conceptual Design Plan&#10;Requirements&#10;Conceptual Design&#10;Conceptual Design Review&#10;Detailed Design Plan&#10;Detailed Design/Prototype&#10;Detailed Design Review&#10;Implementation Plan&#10;Test Case Generation&#10;Solution Specification&#10;Solution Review&#10;Solution Implementation&#10;Unit/System Test&#10;Reflection&#10;Repository Update&#10;Planning&#10;Information Gathering&#10;Information Understanding&#10;Verifying&#10;Outlining&#10;Drafting&#10;Finalizing&#10;Team Meeting&#10;Coach Meeting&#10;Stakeholder Meeting" />
-      <TextArea fx:id="effortCategoryArea" layoutX="314.0" layoutY="249.0" prefHeight="94.0" prefWidth="98.0" text="Plans&#10;Deliverables&#10;Interruptions&#10;Defects&#10;Others" />
-      <TextArea fx:id="deliverableArea" layoutX="314.0" layoutY="520.0" prefHeight="94.0" prefWidth="288.0" text="Conceptual Design&#10;Detailed Design&#10;Test Cases&#10;Solution&#10;Reflection&#10;Outline&#10;Draft&#10;Report&#10;User Defined&#10;Other" />
-      <Text layoutX="4.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Life Cycle Steps:">
+      <TextArea fx:id="stepArea" layoutX="14.0" layoutY="250.0" prefHeight="94.0" prefWidth="288.0" text="Problem Understanding&#10;Conceptual Design Plan&#10;Requirements&#10;Conceptual Design&#10;Conceptual Design Review&#10;Detailed Design Plan&#10;Detailed Design/Prototype&#10;Detailed Design Review&#10;Implementation Plan&#10;Test Case Generation&#10;Solution Specification&#10;Solution Review&#10;Solution Implementation&#10;Unit/System Test&#10;Reflection&#10;Repository Update&#10;Planning&#10;Information Gathering&#10;Information Understanding&#10;Verifying&#10;Outlining&#10;Drafting&#10;Finalizing&#10;Team Meeting&#10;Coach Meeting&#10;Stakeholder Meeting" />
+      <TextArea fx:id="effortCategoryArea" editable="false" layoutX="314.0" layoutY="249.0" prefHeight="94.0" prefWidth="231.0" text="Plans&#10;Deliverables&#10;Interruptions&#10;Defects&#10;Others" />
+      <TextArea fx:id="deliverableArea" layoutX="315.0" layoutY="394.0" prefHeight="94.0" prefWidth="231.0" text="Conceptual Design&#10;Detailed Design&#10;Test Cases&#10;Solution&#10;Reflection&#10;Outline&#10;Draft&#10;Report&#10;User Defined&#10;Other" />
+      <Text layoutX="14.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Life Cycle Steps:">
          <font>
             <Font name="Verdana Bold" size="12.0" />
          </font>
       </Text>
-      <Text layoutX="4.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6. Interruptions:">
+      <Text layoutX="557.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6. Interruptions:">
          <font>
             <Font name="Verdana Bold" size="12.0" />
          </font>
       </Text>
       <Text layoutX="60.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="These names and order can be changed at will. Enter new items in a new line." wrappingWidth="425.62347412109375" />
-      <TextArea fx:id="interruptionArea" layoutY="390.0" prefHeight="94.0" prefWidth="288.0" text="Break&#10;Phone&#10;Teammate&#10;Visitor&#10;Other" />
-      <Text layoutY="516.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7. Defect Categories:">
+      <TextArea fx:id="interruptionArea" layoutX="557.0" layoutY="250.0" prefHeight="94.0" prefWidth="215.0" text="Break&#10;Phone&#10;Teammate&#10;Visitor&#10;Other" />
+      <Text layoutX="557.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7. Defect Categories:">
          <font>
             <Font name="Verdana Bold" size="12.0" />
          </font>
       </Text>
-      <TextArea fx:id="defectCategoryArea" layoutY="520.0" prefHeight="94.0" prefWidth="288.0" text="Not Specified&#10;10 Documentation&#10;20 Syntax&#10;30 Build, Package&#10;40 Assignment&#10;50 Interface&#10;60 Checking&#10;70 Data&#10;80 Function&#10;90 System&#10;100 Environment" />
-      <Button layoutX="260.0" layoutY="631.0" mnemonicParsing="false" text="Update">
+      <TextArea fx:id="defectCategoryArea" layoutX="560.0" layoutY="394.0" prefHeight="94.0" prefWidth="215.0" text="Not Specified&#10;10 Documentation&#10;20 Syntax&#10;30 Build, Package&#10;40 Assignment&#10;50 Interface&#10;60 Checking&#10;70 Data&#10;80 Function&#10;90 System&#10;100 Environment" />
+      <Button fx:id="updateButton" layoutX="660.0" layoutY="172.0" mnemonicParsing="false" onAction="#updatePressed" prefHeight="17.0" prefWidth="75.0" text="Update">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
       <TextArea fx:id="effortCategoryArea1" layoutX="10.0" layoutY="101.0" prefHeight="94.0" prefWidth="256.0" text="Business Project&#10;Development Project" />
       <TextArea fx:id="effortCategoryArea11" layoutX="283.0" layoutY="101.0" prefHeight="94.0" prefWidth="256.0" text="17,18,19,20,21,22,23,24,25,26&#10;1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16" />
-      <Text layoutX="286.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="List life cycle steps between commas" />
-      <Text layoutX="335.0" layoutY="654.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Press this button to update all the choices" />
+      <Text layoutX="541.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="List life cycle steps between commas" />
+      <Text layoutX="598.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Press this button to update all the choices" />
    </children>
 </AnchorPane>

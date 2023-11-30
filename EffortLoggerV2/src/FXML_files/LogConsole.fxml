@@ -10,7 +10,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="862.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LogConsoleController">
    <children>
-      <Line endX="748.5" endY="-3.814697265625E-6" layoutX="115.0" layoutY="44.0" startX="-175.79998779296875" startY="-3.814697265625E-6" />
       <Text layoutX="273.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Effort Logger Console" textAlignment="CENTER">
          <font>
             <Font name="Arial Bold" size="30.0" />

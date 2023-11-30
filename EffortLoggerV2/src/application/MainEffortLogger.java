@@ -23,11 +23,12 @@ public class MainEffortLogger extends Application {
 	@Override
 	public void start(Stage stage) {
 		try {
-			// DBConnection db = new DBConnection();
+			DBConnection.getConnection();
 			// starting screen
-			Parent root1 = FXMLLoader.load(getClass().getResource("/FXML_files/EffortLogger.fxml"));
-			Scene scene1 = new Scene(root1);
-			stage.setScene(scene1);
+			FXMLLoader.load(getClass().getResource("/FXML_files/Definitions.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/FXML_files/EffortLogger.fxml"));
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
 			stage.setTitle("EffortLogger V2");
 			stage.show();
 		} catch (Exception e) {
