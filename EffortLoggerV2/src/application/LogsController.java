@@ -1,80 +1,66 @@
-package application;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
-public class LogsController {
-	@FXML
-    private TextField numberField;
+public class LogsController implements Initializable {
     @FXML
-    private DatePicker datePicker;
+    private TableView<EffortLogs> effortTable;    
     @FXML
-    private TextField startTimeField;
+    private TableColumn<EffortLogs, String> projectCol;
     @FXML
-    private TextField stopTimeField;
+    private TableColumn<EffortLogs, Timestamp> startCol;
     @FXML
-    private TextField timeDeltaField;
+    private TableColumn<EffortLogs, Timestamp> stopCol;
     @FXML
-    private ChoiceBox<String> lifeCycleStepChoice;
+    private TableColumn<EffortLogs, String> stepCol;
     @FXML
-    private ChoiceBox<String> categoryChoice;
+    private TableColumn<EffortLogs, String> effortCategoryCol;
     @FXML
-    private TextArea deliverableTextArea;
-    @FXML
-    private TextField defectNumberField;
-    @FXML
-    private TextField defectNameField;
-    @FXML
-    private TextArea defectDetailTextArea;
-    @FXML
-    private CheckBox injectedCheckBox;
-    @FXML
-    private CheckBox removedCheckBox;
-    @FXML
-    private ChoiceBox<String> defectCategoryChoice;
-    @FXML
-    private ChoiceBox<String> defectStatusChoice;
+    private TableColumn<EffortLogs, String> deliverableCol;
 
-    @FXML
-    private void saveLog() {
-        // Retrieve data from the input fields
-        String number = numberField.getText();
-        String date = datePicker.getValue().toString();
-        String startTime = startTimeField.getText();
-        String stopTime = stopTimeField.getText();
-        String timeDelta = timeDeltaField.getText();
-        String lifeCycleStep = lifeCycleStepChoice.getValue();
-        String category = categoryChoice.getValue();
-        String deliverable = deliverableTextArea.getText();
-        String defectNumber = defectNumberField.getText();
-        String defectName = defectNameField.getText();
-        String defectDetail = defectDetailTextArea.getText();
-        boolean isInjected = injectedCheckBox.isSelected();
-        boolean isRemoved = removedCheckBox.isSelected();
-        String defectCategory = defectCategoryChoice.getValue();
-        String defectStatus = defectStatusChoice.getValue();
 
-        // Process and store the data (not implemented here)
-
-        // Clear the input fields
-        clearFields();
-    }
-
-    private void clearFields() {
-        numberField.clear();
-        datePicker.setValue(null);
-        startTimeField.clear();
-        stopTimeField.clear();
-        timeDeltaField.clear();
-        lifeCycleStepChoice.setValue(null);
-        categoryChoice.setValue(null);
-        deliverableTextArea.clear();
-        defectNumberField.clear();
-        defectNameField.clear();
-        defectDetailTextArea.clear();
-        injectedCheckBox.setSelected(false);
-        removedCheckBox.setSelected(false);
-        defectCategoryChoice.setValue(null);
-        defectStatusChoice.setValue(null);
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        try {
+	    	Connection con = DBConnection.getConnection();
+	        Statement statement = con.createStatement();
+	        String query = "Select * FROM EFFORT_LOGS";
+	        // Read data from the sql table to get effort log objects
+	        ResultSet rst;
+	        rst = statement.executeQuery(query);
+	        ArrayList<EffortLogs> effortList = new ArrayList<>();
+	        while(rst.next()) {
+	        	EffortLogs effortLog = new EffortLogs(rst.getTimestamp("START_TIME"), rst.getTimestamp("STOP_TIME"), rst.getString("PROJECT_NAME"), rst.getString("LIFE_CYCLE_STEP"), rst.getString("EFFORT_CATEGORY"), rst.getString("DELIVERABLE"));
+	        	effortList.add(effortLog);
+	        }
+	        // Add data to the table
+	        ObservableList<EffortLogs> logs = FXCollections.observableArrayList(effortList);
+	        projectCol.setCellValueFactory(new PropertyValueFactory<EffortLogs,String>("PROJECT_NAME"));
+	        startCol.setCellValueFactory(new PropertyValueFactory<EffortLogs,Timestamp>("START_TIME"));
+	        stopCol.setCellValueFactory(new PropertyValueFactory<EffortLogs,Timestamp>("STOP_TIME"));
+	        stepCol.setCellValueFactory(new PropertyValueFactory<EffortLogs,String>("LIFE_CYCLE_STEP"));
+	        effortCategoryCol.setCellValueFactory(new PropertyValueFactory<EffortLogs,String>("EFFORT_CATEGORY"));
+	        deliverableCol.setCellValueFactory(new PropertyValueFactory<EffortLogs,String>("DELIVERABLE"));
+	        effortTable.setItems(logs);
+	        
+        } catch (SQLException e) {
+        	e.printStackTrace();
+        }
+        
+    	
     }
 }

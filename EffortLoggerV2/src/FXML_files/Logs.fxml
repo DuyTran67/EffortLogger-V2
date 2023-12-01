@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox fx:controller="application.LogsController" xmlns:fx="http://javafx.com/fxml">
-    <Label text="Logs" style="-fx-font-family: 'Verdana'; -fx-font-size: 20; -fx-font-weight: bold;" />
-    <TableView fx:id="logsTable">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="862.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="398.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logs">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Text>
+      <Label layoutX="38.0" layoutY="54.0" text="Effort Logs">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <TableView fx:id="effortTable" layoutX="38.0" layoutY="93.0" prefHeight="200.0" prefWidth="785.0">
         <columns>
-            <TableColumn fx:id="numberColumn" text="Number" />
-            <TableColumn fx:id="dateColumn" text="Date" />
-            <TableColumn fx:id="startTimeColumn" text="Start Time" />
-            <TableColumn fx:id="stopTimeColumn" text="Stop Time" />
-            <TableColumn fx:id="timeDeltaColumn" text="Time Delta" />
-            <TableColumn fx:id="lifeCycleStepColumn" text="Life Cycle Step" />
-            <TableColumn fx:id="categoryColumn" text="Category" />
-            <TableColumn fx:id="deliverableColumn" text="Deliverable / Interruption / etc." />
-            <TableColumn fx:id="defectNumberColumn" text="Defect Number" />
-            <TableColumn fx:id="defectNameColumn" text="Defect Name" />
-            <TableColumn fx:id="defectDetailColumn" text="Defect Detail" />
-            <TableColumn fx:id="defectInjectedColumn" text="Defect Injected" />
-            <TableColumn fx:id="defectRemovedColumn" text="Defect Removed" />
-            <TableColumn fx:id="defectCategoryColumn" text="Defect Category" />
-            <TableColumn fx:id="defectStatusColumn" text="Defect Status" />
+          <TableColumn fx:id="projectCol" prefWidth="127.99999618530273" text="Project Name" />
+          <TableColumn fx:id="startCol" prefWidth="96.00001525878906" text="Start Time" />
+          <TableColumn fx:id="stopCol" prefWidth="96.00001525878906" text="Stop Time" />
+          <TableColumn fx:id="stepCol" prefWidth="177.5999755859375" text="Life Cycle Step" />
+          <TableColumn fx:id="effortCategoryCol" prefWidth="163.20001220703125" text="Effort Category" />
+          <TableColumn fx:id="deliverableCol" minWidth="0.0" prefWidth="122.39998779296877" text="Deliverable" />
         </columns>
-    </TableView>
-    <Button text="Add Entry"/>
-</VBox>
+      </TableView>
+   </children>
+</AnchorPane>
