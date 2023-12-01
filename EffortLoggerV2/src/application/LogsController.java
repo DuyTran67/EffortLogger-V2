@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -22,17 +23,10 @@ public class LogsController {
     @FXML
     private TableView<EffortLogs> effortTable;    
     @FXML
-    private TableColumn<EffortLogs, String> projectCol;
+    private TableColumn<EffortLogs, String> projectCol, startCol, stopCol, stepCol, effortCategoryCol, deliverableCol;
+
     @FXML
-    private TableColumn<EffortLogs, Timestamp> startCol;
-    @FXML
-    private TableColumn<EffortLogs, Timestamp> stopCol;
-    @FXML
-    private TableColumn<EffortLogs, String> stepCol;
-    @FXML
-    private TableColumn<EffortLogs, String> effortCategoryCol;
-    @FXML
-    private TableColumn<EffortLogs, String> deliverableCol;
+    private TableView<DefectReport> defectTable;
     
     public void viewLogs(ActionEvent event) {
     	try {
@@ -42,19 +36,18 @@ public class LogsController {
 	        // Read data from the sql table to get effort log objects
 	        ResultSet rst;
 	        rst = statement.executeQuery(query);
-	        ArrayList<EffortLogs> effortList = new ArrayList<>();
+	        List<EffortLogs> effortList = new ArrayList<>();
 	        while(rst.next()) {
-	        	System.out.println(rst.getTimestamp("START_TIME"));
-	        	EffortLogs effortLog = new EffortLogs(rst.getTimestamp("START_TIME"), rst.getTimestamp("END_TIME"), rst.getString("PROJECT_NAME"), rst.getString("LIFE_CYCLE_STEP"), rst.getString("EFFORT_CATEGORY"), rst.getString("DELIVERABLE"));
+	        	EffortLogs effortLog = new EffortLogs(rst.getString("PROJECT_NAME"), rst.getTimestamp("START_TIME"), rst.getTimestamp("END_TIME"), rst.getString("LIFE_CYCLE_STEP"), rst.getString("EFFORT_CATEGORY"), rst.getString("DELIVERABLE"));
 	        	effortList.add(effortLog);
 	        }
 	        // Add data to the table
-	        ObservableList<EffortLogs> logs = FXCollections.observableArrayList(effortList);
+	        ObservableList<EffortLogs> logs = FXCollections.observableList(effortList);
 	        projectCol.setCellValueFactory(new PropertyValueFactory<EffortLogs,String>("project"));
-	        startCol.setCellValueFactory(new PropertyValueFactory<EffortLogs,Timestamp>("startTime"));
-	        stopCol.setCellValueFactory(new PropertyValueFactory<EffortLogs,Timestamp>("stopTime"));
-	        stepCol.setCellValueFactory(new PropertyValueFactory<EffortLogs,String>("lifeCycle"));
-	        effortCategoryCol.setCellValueFactory(new PropertyValueFactory<EffortLogs,String>("effortCategory"));
+	        startCol.setCellValueFactory(new PropertyValueFactory<EffortLogs,String>("start"));
+	        stopCol.setCellValueFactory(new PropertyValueFactory<EffortLogs,String>("stop"));
+	        stepCol.setCellValueFactory(new PropertyValueFactory<EffortLogs,String>("step"));
+	        effortCategoryCol.setCellValueFactory(new PropertyValueFactory<EffortLogs,String>("effort"));
 	        deliverableCol.setCellValueFactory(new PropertyValueFactory<EffortLogs,String>("deliverable"));
 	        effortTable.setItems(logs);
 	        

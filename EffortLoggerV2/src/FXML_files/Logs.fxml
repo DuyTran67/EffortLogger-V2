@@ -15,12 +15,12 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Text>
-      <Label layoutX="38.0" layoutY="54.0" text="Effort Logs">
+      <Label layoutX="38.0" layoutY="40.0" text="Effort Logs">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <TableView fx:id="effortTable" layoutX="38.0" layoutY="93.0" prefHeight="200.0" prefWidth="785.0">
+      <TableView fx:id="effortTable" layoutX="37.0" layoutY="78.0" prefHeight="169.0" prefWidth="786.0">
         <columns>
           <TableColumn fx:id="projectCol" prefWidth="127.99999618530273" text="Project Name" />
           <TableColumn fx:id="startCol" prefWidth="96.00001525878906" text="Start Time" />
@@ -30,6 +30,23 @@
           <TableColumn fx:id="deliverableCol" minWidth="0.0" prefWidth="122.39998779296877" text="Deliverable" />
         </columns>
       </TableView>
-      <Button fx:id="viewButton" layoutX="396.0" layoutY="303.0" mnemonicParsing="false" onAction="#viewLogs" text="View Logs" />
+      <Button fx:id="viewButton" layoutX="384.0" layoutY="256.0" mnemonicParsing="false" onAction="#viewLogs" prefHeight="38.0" prefWidth="91.0" text="View Logs" />
+      <Label layoutX="38.0" layoutY="275.0" text="Defect Logs">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <TableView fx:id="defectTable" layoutX="37.0" layoutY="317.0" prefHeight="170.0" prefWidth="786.0">
+        <columns>
+          <TableColumn fx:id="projectCol" prefWidth="74.39995956420898" text="Project" />
+          <TableColumn fx:id="nameCol" prefWidth="91.199951171875" text="Group Name" />
+          <TableColumn fx:id="numCol" prefWidth="90.40003967285156" text="Group Number" />
+          <TableColumn fx:id="stepCol" prefWidth="89.5999755859375" text="Life Cycle Step" />
+          <TableColumn fx:id="defectCol" prefWidth="111.20001220703125" text="Defect Category" />
+          <TableColumn fx:id="descriptionCol" prefWidth="243.99993896484375" text="Description" />
+          <TableColumn fx:id="keywordsCol" prefWidth="91.19989013671875" text="Keywords" />                 
+          
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

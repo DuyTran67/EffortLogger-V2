@@ -40,26 +40,17 @@ public class LogConsoleController implements Initializable {
     
     private long startTime;
     private long endTime;
-
-    private Parent root;
-    private Scene scene;
-    private Stage stage;
-    
-    private DefinitionsController def_page = new DefinitionsController();
     
     
     // This method loads in all the combobox items
     @Override
     public void initialize(URL url, ResourceBundle resourcebundle) {
     	try {
-			FXMLLoader.load(getClass().getResource("/FXML_files/Definitions.fxml"));
-    	//ArrayList<String> deli = def_page.getDeliverables();
-    	//System.out.println("aa:" + deli.get(0));
-    	projectCombo.setItems(FXCollections.observableArrayList("Development Project", "Business Project"));
-    	lifeCycleCombo.setItems(FXCollections.observableArrayList("Problem Understanding", "Conceptual Design Plan", "Requirements", "Conceptual Design", "Conceptual Design Review", "Detailed Design Plan", "Detailed Design/Prototype", "Detailed Design Review", "Implementation plan", "Test Case Generation", "Solution Specification", "Solution Review", "Solution Implementation", "Unit/System Test", "Reflection", "Repository Update"));
-    	effortCategoryCombo.setItems(FXCollections.observableArrayList("Plans", "Deliverables", "Interruptions", "Defects", "Others"));
-    	deliverableCombo.setItems(FXCollections.observableArrayList("Conceptual Design", "Detailed Design", "Test Cases", "Solution", "Reflection", "Outline", "Draft", "Report", "User Defined", "Other"));
-		} catch (IOException e) {
+	    	projectCombo.setItems(FXCollections.observableArrayList("Development Project", "Business Project"));
+	    	lifeCycleCombo.setItems(FXCollections.observableArrayList("Problem Understanding", "Conceptual Design Plan", "Requirements", "Conceptual Design", "Conceptual Design Review", "Detailed Design Plan", "Detailed Design/Prototype", "Detailed Design Review", "Implementation plan", "Test Case Generation", "Solution Specification", "Solution Review", "Solution Implementation", "Unit/System Test", "Reflection", "Repository Update"));
+	    	effortCategoryCombo.setItems(FXCollections.observableArrayList("Plans", "Deliverables", "Interruptions", "Defects", "Others"));
+	    	deliverableCombo.setItems(FXCollections.observableArrayList("Conceptual Design", "Detailed Design", "Test Cases", "Solution", "Reflection", "Outline", "Draft", "Report", "User Defined", "Other"));
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
     }
