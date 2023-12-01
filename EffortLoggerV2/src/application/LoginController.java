@@ -31,7 +31,7 @@ public class LoginController {
     private Parent root;
     
     private String username, pw;
-    private String csvPath = "C:\\Users\\duy67\\git\\EffortLoggerV2Repo\\EffortLoggerV2\\src\\application\\accounts.csv";
+    private String csvPath = "src/application/accounts.csv";
     
     @FXML
     private TextField usernameField;
@@ -47,7 +47,7 @@ public class LoginController {
 			// if user and pw valid, show success pop up
 			if (isValid(username, pw)) {
                 // open effort log console
-        			root = FXMLLoader.load(getClass().getResource("/FXML_files/HomePage.fxml"));
+        			root = FXMLLoader.load(getClass().getResource("/FXML_files/EffortLogger.fxml"));
         			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         			scene = new Scene(root);
         			stage.setScene(scene);

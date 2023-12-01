@@ -1,6 +1,6 @@
 package application;
 
-import javafx.collections.FXCollections; 
+import javafx.collections.FXCollections;  
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +25,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.Instant;
 
 public class LogConsoleController implements Initializable {
     @FXML
@@ -67,7 +68,7 @@ public class LogConsoleController implements Initializable {
     @FXML
     private void startActivity(ActionEvent event) {
     	System.out.println("Activity started");
-		startTime = System.nanoTime();        
+		startTime = System.nanoTime();      
 		clockText.setText("Clock is running");
 		clockRectangle.setFill(Color.web("0x0dff3e", 1.0));
 		clockRectangle.setStroke(Color.web("0x0dff3e", 1.0));
@@ -89,31 +90,31 @@ public class LogConsoleController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("One or more lists are not selected");
             alert.showAndWait();
-            // Store the data in the database
+        // User stopped activity, record the data.
         } else {
     		clockText.setText("Clock is stopped");
     		clockRectangle.setFill(Color.RED);
     		clockRectangle.setStroke(Color.RED);
             System.out.println("Activity stopped");
-        	storeActivityDataInDatabase(stoppedProject, stoppedLifeCycle, stoppedEffortCategory, stoppedDeliverable, startTime, endTime);
 
-	        endTime = System.nanoTime();
-	        long timeElapsed = (endTime - startTime) / 1000000000;
-	        System.out.println("Time of activity: " + timeElapsed + "s");
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Activity Stopped");
             alert.setHeaderText(null);
             alert.setContentText("Activity has been stopped and logged");
             alert.showAndWait();
+            
+            // Get start and end time
+	        endTime = System.nanoTime();
+            // First convert from nanoseconds to seconds
+            startTime = startTime / 1_000_000_000L;
+            endTime = endTime / 1_000_000_000L;
+            Instant instant1 = Instant.ofEpochSecond(startTime);
+            Instant instant2 = Instant.ofEpochSecond(endTime);
+            Timestamp start = Timestamp.from(instant1);
+            Timestamp end = Timestamp.from(instant2);
+            DBCreation.insertEffortLog(start, end, stoppedProject, stoppedLifeCycle, stoppedEffortCategory, stoppedDeliverable);            
         }
 	        
-    }
-
-
-
-    // Store activity data in the database
-    public static void storeActivityDataInDatabase(Timestamp startTime, Timestamp endTime, String project, String lifeCycle, String effortCategory, String deliverable) {
-
     }
 
     // The following methods are to navigate to other pages

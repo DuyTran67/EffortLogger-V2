@@ -32,7 +32,8 @@ public class RegisterController {
 	private PasswordField passwordField2;
 	
 	private String username, password1, password2;
-	private String csvPath = "C:\\Users\\duy67\\git\\EffortLoggerV2Repo\\EffortLoggerV2\\src\\application\\accounts.csv";
+    /* Put your own absolute path here */
+	private String csvPath = "src/application/accounts.csv";
 	// An encryption object to encrypt password later
 	Encryption aes = new Encryption();
 	

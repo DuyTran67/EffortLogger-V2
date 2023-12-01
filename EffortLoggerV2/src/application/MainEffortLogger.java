@@ -28,11 +28,13 @@ public class MainEffortLogger extends Application {
 	public void start(Stage stage) {
 		try {
 			// Connect to the database
-			DBConnection.getConnection(connection);
-			
-			// starting screen
+			DBConnection.getConnection();
+			DBCreation.createEffortLogs();
+
+			// Load the definitions
 			FXMLLoader.load(getClass().getResource("/FXML_files/Definitions.fxml"));
-			Parent root = FXMLLoader.load(getClass().getResource("/FXML_files/EffortLogger.fxml"));
+			// starting screen
+			Parent root = FXMLLoader.load(getClass().getResource("/FXML_files/LoginPage.fxml"));
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.setTitle("EffortLogger V2");

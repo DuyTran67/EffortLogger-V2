@@ -8,20 +8,21 @@ package application;
 import java.sql.*;
 
 public class DBConnection {
-	// creating the JDBC URL, username and password for the database
-    private static final String URL = "jdbc:h2:~/EffortLoggerDB";
-    private static final String USERNAME = "admin";
-    private static final String PASSWORD = "cse360th1";
-   
     // This method establishes a connection to the database
-    public static void getConnection(Connection connection) {
+    public static Connection getConnection() {
+    	// creating the JDBC URL, username and password for the database
+        String URL = "jdbc:h2:~/EffortLoggerDB";
+        String USERNAME = "admin";
+        String PASSWORD = "cse360th1";
+    	Connection connection;
+    	
     	try {
 	    	connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 	    	System.out.println("Successfully established connection to the database.");
-	    	// Run Effort Logger application
     	} catch (SQLException e) {
     		e.printStackTrace();
     	     throw new RuntimeException("Failed to establish connection to the database", e);    		
     	}
+    	return connection;
     }
 }

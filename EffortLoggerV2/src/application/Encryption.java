@@ -26,7 +26,7 @@ public class Encryption {
 	private static String encoding = "UTF-8";
 	private static String alias = "cse360";
 	private static String pw = "teamth1";
-	private static String path = "C:\\Users\\duy67\\git\\EffortLoggerV2Repo\\EffortLoggerV2\\src\\application\\keystore.jks";
+	private static String path = "src/application/keystore.jks";
 	
 	// Constructor
 	public Encryption() {
