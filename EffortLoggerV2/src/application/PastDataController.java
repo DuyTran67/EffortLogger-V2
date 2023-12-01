@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -30,12 +31,18 @@ public class PastDataController {
 	private TextField word;
 	@FXML
 	private ComboBox<String> point_select;
+	@FXML
+	private AnchorPane screen;
 	private Scene scene;
+	private int num = 0;
 	
 	//Sets up the ComboBox
 	public void setup() {
-		point_select.getItems().addAll("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","20","25","30","40",
+		num +=1;
+		if(num == 1) {
+			point_select.getItems().addAll("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","20","25","30","40",
 				"50","60","70","80","90","100");
+		}
 	}
 	
 	//Goes through updates the screen based on what the user inputs
@@ -85,6 +92,27 @@ public class PastDataController {
 							break;
 						}
 					}
+				}
+			}
+			if(keywords.getText().isBlank()) {
+				if(library.getLibrary().get(i).getProject() == "Project 2" && library.getLibrary().get(i).getPoints() == p ) {
+								projects.setText(projects.getText() + library.getLibrary().get(i).getProject() + "\n");
+								points.setText(points.getText() + library.getLibrary().get(i).getPoints() + "\n");
+								story.setText(story.getText() + library.getLibrary().get(i).getStory() + "\n");
+								step.setText(step.getText() + library.getLibrary().get(i).getStep() + "\n");
+								category.setText(category.getText() + library.getLibrary().get(i).getCat() + "\n");
+								keywords.setText(keywords.getText() + library.getLibrary().get(i).getKey() + "\n");
+								exit = 1;
+								break;
+				}else if (library.getLibrary().get(i).getPoints() == p){
+								projects.setText(library.getLibrary().get(i).getProject() + "\n" + projects.getText());
+								points.setText(library.getLibrary().get(i).getPoints() + "\n" +points.getText());
+								story.setText(library.getLibrary().get(i).getStory() + "\n" + story.getText());
+								step.setText(library.getLibrary().get(i).getStep() + "\n" + step.getText());
+								category.setText(library.getLibrary().get(i).getCat() + "\n" + category.getText());
+								keywords.setText(library.getLibrary().get(i).getKey() + "\n" + keywords.getText());
+								exit = 1;
+								break;
 				}
 			}
 		}

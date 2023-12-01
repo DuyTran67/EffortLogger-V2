@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -37,6 +38,9 @@ public class Logs_PageController {
 	private ComboBox<String> projects;
 	@FXML
 	private Button defect_btn, setup;
+	@FXML
+	private AnchorPane screen;
+	private int num = 0;
 	
 	public void logs() {
 		DefectLibrary library = DefectController.getLibrary();
@@ -83,12 +87,34 @@ public class Logs_PageController {
 					}
 				}
 			}
+			if(keywords.getText().isBlank()) {
+				if(library.getReports().get(i).getProject() == "Project 2" && library.getReports().get(i).getProject() == p) {
+								Project_name.setText(Project_name.getText() + library.getReports().get(i).getProject() + "\n");
+								Group_name.setText(Group_name.getText() + library.getReports().get(i).getName() + "\n");
+								group_num.setText(group_num.getText() + library.getReports().get(i).getNum() + "\n");
+								defects.setText(defects.getText() + library.getReports().get(i).getReportContent() + "\n");
+								step.setText(step.getText() + library.getReports().get(i).getStep() + "\n");
+								category.setText(category.getText() + library.getReports().get(i).getCat() + "\n");
+								words.setText(words.getText() + library.getReports().get(i).getKey() + "\n");
+				}else if (library.getReports().get(i).getProject() == p){
+								Project_name.setText(library.getReports().get(i).getProject() + "\n" + Project_name.getText());
+								Group_name.setText(library.getReports().get(i).getName() + "\n" + Group_name.getText());
+								group_num.setText(library.getReports().get(i).getNum() + "\n" + group_num.getText());
+								defects.setText(library.getReports().get(i).getReportContent() + "\n" + defects.getText());
+								step.setText(library.getReports().get(i).getStep() + "\n" + step.getText());
+								category.setText(library.getReports().get(i).getCat() + "\n" + category.getText());
+								words.setText(library.getReports().get(i).getKey() + "\n" + words.getText());
+				}
+			}
 		}
 
 	}
 	
 	public void setup() {
-		projects.getItems().addAll("Project 1", "Project 2");
+		num += 1;
+		if(num == 1) {
+			projects.getItems().addAll("Project 1", "Project 2");
+		}
 	}
 	public void defect() {
 	    // get a handle to the stage

@@ -10,6 +10,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -30,6 +31,9 @@ public class PPController {
 	private TextField keywords;
 	@FXML
 	private Label error;
+	@FXML
+	private AnchorPane screen;
+	private int num = 0;
 	private Scene scene;
 	private Stage stage;
 	
@@ -37,14 +41,17 @@ public class PPController {
 	
 	//Sets the ComboBoxes
 	public void set() {
-		projects.getItems().addAll("Project 1", "Project 2");
-		points.getItems().addAll("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","20","25","30","40",
-				"50","60","70","80","90","100");
-		step.getItems().addAll("Problem Understanding", "Conceptual Design Plan", "Requirements", "Conceptual Design", "Conceptual Design Review",
-				"Detailed Design Plan","Detailed Design/Prototype", "Detailed Design Review", "Implementation Plan", "Test Case Generation",
-				"Solution Specification","Solution Review", "Solution Implementation", "Unit/System Test", "Reflection", "Repository Update");
-		category.getItems().addAll("Not specified", "Documentation", "Syntax","Build, Package", "Assignment", "Interface",
-				"Checking", "Data", "Function","System", "Environment");
+		num += 1;
+		if(num == 1) {
+			projects.getItems().addAll("Project 1", "Project 2");
+			points.getItems().addAll("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","20","25","30","40",
+					"50","60","70","80","90","100");
+			step.getItems().addAll("Problem Understanding", "Conceptual Design Plan", "Requirements", "Conceptual Design", "Conceptual Design Review",
+					"Detailed Design Plan","Detailed Design/Prototype", "Detailed Design Review", "Implementation Plan", "Test Case Generation",
+					"Solution Specification","Solution Review", "Solution Implementation", "Unit/System Test", "Reflection", "Repository Update");
+			category.getItems().addAll("Not specified", "Documentation", "Syntax","Build, Package", "Assignment", "Interface",
+					"Checking", "Data", "Function","System", "Environment");
+		}
 	}
 	//Closes the Window
 	public void EL() throws IOException {
