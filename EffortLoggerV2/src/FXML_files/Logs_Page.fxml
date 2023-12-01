@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Logs_PageController">
+<AnchorPane fx:id="screen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#setup" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Logs_PageController">
    <children>
       <Label layoutX="211.0" layoutY="3.0" text="Defect Logs">
          <font>
@@ -52,6 +52,5 @@
       <Label layoutX="311.0" layoutY="99.0" text="Key Words" />
       <Label layoutX="264.0" layoutY="57.0" text="Enter key words" />
       <TextField fx:id="keywords" layoutX="355.0" layoutY="53.0" promptText="Key words" />
-      <Button fx:id="setup" layoutX="21.0" layoutY="16.0" mnemonicParsing="false" onAction="#setup" text="Set Up" />
    </children>
 </AnchorPane>

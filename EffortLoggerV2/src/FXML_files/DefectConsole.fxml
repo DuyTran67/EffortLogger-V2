@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DefectController">
+<AnchorPane fx:id="screen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#button" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DefectController">
    <children>
-      <Label layoutX="198.0" layoutY="14.0" text="Defect Console Prototype" textFill="RED">
+      <Label layoutX="240.0" layoutY="14.0" text="Defect Console">
          <font>
             <Font size="18.0" />
          </font>
@@ -26,7 +26,6 @@
       <ComboBox fx:id="group_num" layoutX="176.0" layoutY="144.0" prefWidth="150.0" promptText="Select Number" />
       <Button id="Submit_btn" fx:id="Submit_btn" layoutX="486.0" layoutY="343.0" mnemonicParsing="false" onAction="#submit" text="Submit" />
       <Button id="EL_btn" fx:id="EL_btn" layoutX="36.0" layoutY="343.0" mnemonicParsing="false" onAction="#EL" text="EffortLogger Console" />
-      <Button fx:id="start_btn" layoutX="36.0" layoutY="15.0" mnemonicParsing="false" onAction="#button" text="Button" />
       <Label fx:id="error_txt" layoutX="388.0" layoutY="377.0" prefHeight="18.0" prefWidth="204.0" text="Click Submit when ready" />
       <Button fx:id="log_btn" layoutX="274.0" layoutY="343.0" mnemonicParsing="false" onAction="#log" text="Logs" />
       <ComboBox fx:id="step" layoutX="407.0" layoutY="81.0" prefWidth="150.0" promptText="Select Step" />

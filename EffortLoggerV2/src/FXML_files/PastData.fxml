@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PastDataController">
+<AnchorPane fx:id="screen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#setup" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PastDataController">
    <children>
       <Label layoutX="218.0" layoutY="14.0" text="Past Stories">
          <font>
@@ -34,6 +34,5 @@
       <Label layoutX="218.0" layoutY="62.0" text="Enter Key Word" />
       <Label layoutX="260.0" layoutY="103.0" text="Key words" />
       <TextArea fx:id="keywords" editable="false" layoutX="232.0" layoutY="121.0" prefHeight="240.0" prefWidth="110.0" />
-      <Button fx:id="set" layoutX="11.0" layoutY="14.0" mnemonicParsing="false" onAction="#setup" text="Set up" />
    </children>
 </AnchorPane>
