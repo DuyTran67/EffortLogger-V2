@@ -18,7 +18,6 @@ public class DBConnection {
     	
     	try {
 	    	connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-	    	System.out.println("Successfully established connection to the database.");
     	} catch (SQLException e) {
     		e.printStackTrace();
     	     throw new RuntimeException("Failed to establish connection to the database", e);    		

@@ -157,7 +157,7 @@ public class RegisterController {
 
 	// method to save account credentials to csv file
 	public void saveAccount(Account acc) throws IOException {
-		File csvFile = new File("C:\\Users\\duy67\\git\\EffortLoggerV2Repo\\EffortLoggerV2\\src\\application\\accounts.csv");
+		File csvFile = new File("src/application/accounts.csv");
 		FileWriter fileWriter = new FileWriter(csvFile,true);
         String line = acc.getUser() + "," + acc.getPW();
         fileWriter.write(line.toString());
