@@ -112,7 +112,8 @@ public class LogConsoleController implements Initializable {
             Instant instant2 = Instant.ofEpochSecond(endTime);
             Timestamp start = Timestamp.from(instant1);
             Timestamp end = Timestamp.from(instant2);
-            DBCreation.insertEffortLog(start, end, stoppedProject, stoppedLifeCycle, stoppedEffortCategory, stoppedDeliverable);            
+            DBCreation.insertEffortLog(start, end, stoppedProject, stoppedLifeCycle, stoppedEffortCategory, stoppedDeliverable); 
+            
         }
 	        
     }
